@@ -61,9 +61,8 @@ public class HomeFragment extends Fragment {
                                 String price = medicine.getString("price");
                                 String manufacturer = medicine.getString("manufacturer");
                                 String description = medicine.getString("description");
-                                String image = medicine.getString("image");
 
-                                Medicine medicineObj = new Medicine(name, price, manufacturer, description, image);
+                                Medicine medicineObj = new Medicine(name, price, manufacturer, description, R.drawable.bisolvon);
                                 medicineList.add(medicineObj);
                             }
 
