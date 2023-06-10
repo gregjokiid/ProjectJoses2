@@ -1,16 +1,12 @@
 package com.example.bluejackpharmacy.database;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
 import java.io.Serializable;
 
 public class Medicine implements Serializable {
     private String name, price, manufacturer, description;
-    private int image;
+    private String image;
 
-    public Medicine(String name, String price, String manufacturer, String description, int image) {
+    public Medicine(String name, String price, String manufacturer, String description, String image) {
         this.name = name;
         this.price = price;
         this.manufacturer = manufacturer;
@@ -50,11 +46,11 @@ public class Medicine implements Serializable {
         this.description = description;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }
