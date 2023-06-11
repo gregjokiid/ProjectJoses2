@@ -47,6 +47,10 @@ public class LoginActivity extends AppCompatActivity {
                 String email = TxEmail.getText().toString().trim();
                 String password = TxPassword.getText().toString().trim();
 
+                if (password.equals("") || email.equals("")){
+                    Toast.makeText(LoginActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
+                }
+
                 Boolean res = dbHelper.checkUser(email,password);
                 if(res == true){
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
