@@ -62,6 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Password not match", Toast.LENGTH_SHORT).show();
                 }else if (password.equals("") || email.equals("") || name.equals("") || phone.equals("")){
                     Toast.makeText(RegisterActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
+                }else if (name.length() < 5){
+                    Toast.makeText(RegisterActivity.this, "Name at least five characters", Toast.LENGTH_SHORT).show();
                 }else {
                     values.put(DBHelper.row_name, name);
                     values.put(DBHelper.row_email, email);
