@@ -72,11 +72,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (!password.matches("[A-Za-z0-9]+")){
                     Toast.makeText(RegisterActivity.this, "Password must be alphanumeric", Toast.LENGTH_SHORT).show();
                 }else {
-                    values.put(DBHelper.users_row_name, name);
-                    values.put(DBHelper.users_row_email, email);
-                    values.put(DBHelper.users_row_password, password);
-                    values.put(DBHelper.users_row_phone, phone);
-                    values.put(DBHelper.users_row_isVerified, "0");
+                    values.put(DBHelper.row_name, name);
+                    values.put(DBHelper.row_email, email);
+                    values.put(DBHelper.row_password, password);
+                    values.put(DBHelper.row_phone, phone);
+                    values.put(DBHelper.row_isVerified, "0");
                     dbHelper.insertData(values);
 
                     Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_SHORT).show();
