@@ -43,16 +43,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public String checkUser(String email, String password){
-        String[] columns = {row_id, row_isVerified}; // Menambahkan kolom row_isVerified dalam array columns
+        String[] columns = {row_id, row_isVerified};
         SQLiteDatabase db = getReadableDatabase();
         String selection = row_email + "=?" + " and " + row_password + "=?";
         String[] selectionArgs = {email, password};
         Cursor cursor = db.query(table_name, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
 
-        String isVerified = ""; // Menambahkan variabel untuk menyimpan nilai isVerified
+        String isVerified = "";
 
-        if (cursor.moveToFirst()) { // Memeriksa apakah ada baris hasil query
+        if (cursor.moveToFirst()) {
             int isVerifiedIndex = cursor.getColumnIndex(row_isVerified);
             isVerified = cursor.getString(isVerifiedIndex);
         }
@@ -61,7 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
 
         if (count > 0) {
-            if (isVerified.equals("0")) { // Menggunakan equals() untuk membandingkan string
+            if (isVerified.equals("0")) {
                 return "otp";
             } else {
                 return "true";
@@ -70,5 +70,4 @@ public class DBHelper extends SQLiteOpenHelper {
             return "false";
         }
     }
-
 }
