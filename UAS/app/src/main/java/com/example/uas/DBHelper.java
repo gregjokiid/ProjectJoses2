@@ -10,12 +10,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String database_name = "db_login";
     public static final String table_name = "table_login";
-
     public static final String row_id = "_id";
-
     public static final String row_name = "Name";
     public static final String row_email = "Email";
     public static final String row_password = "Password";
+    public static final String row_phone = "Phone";
+    public static final String row_isVerified = "IsVerified";
 
     private SQLiteDatabase db;
 
@@ -27,7 +27,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + table_name + "(" + row_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + row_name + " TEXT," + row_email + " TEXT," + row_password + " TEXT)";
+                + row_name + " TEXT," + row_email + " TEXT," + row_password + " TEXT," + row_phone + " TEXT," + row_isVerified + " TEXT)";
         db.execSQL(query);
     }
 

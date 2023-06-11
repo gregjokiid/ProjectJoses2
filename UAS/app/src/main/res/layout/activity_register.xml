@@ -53,6 +53,13 @@
         android:layout_marginBottom="10dp"
         android:hint="Confirm Password"
         android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/txPhoneReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="Phone"
+        android:inputType="textPersonName" />
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
