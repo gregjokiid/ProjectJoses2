@@ -58,8 +58,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (!password.equals(conPassword)){
                     Toast.makeText(RegisterActivity.this, "Password not match", Toast.LENGTH_SHORT).show();
-                }else if (password.equals("") || email.equals("")){
-                    Toast.makeText(RegisterActivity.this, "Email or Password cannot be empty", Toast.LENGTH_SHORT).show();
+                }else if (password.equals("") || email.equals("") || name.equals("")){
+                    Toast.makeText(RegisterActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
                 }else {
                     values.put(DBHelper.row_name, name);
                     values.put(DBHelper.row_email, email);
