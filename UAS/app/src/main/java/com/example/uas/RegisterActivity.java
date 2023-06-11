@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText TxEmail, TxPassword, TxConPassword;
+    EditText TxName, TxEmail, TxPassword, TxConPassword;
     Button BtnRegister;
     DBHelper dbHelper;
 
@@ -27,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(this);
 
+        TxName = (EditText)findViewById(R.id.txNameReg);
         TxEmail = (EditText)findViewById(R.id.txEmailReg);
         TxPassword = (EditText)findViewById(R.id.txPasswordReg);
         TxConPassword = (EditText)findViewById(R.id.txConPassword);
@@ -47,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         BtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = TxName.getText().toString().trim();
                 String email = TxEmail.getText().toString().trim();
                 String password = TxPassword.getText().toString().trim();
                 String conPassword = TxConPassword.getText().toString().trim();
@@ -59,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if (password.equals("") || email.equals("")){
                     Toast.makeText(RegisterActivity.this, "Email or Password cannot be empty", Toast.LENGTH_SHORT).show();
                 }else {
+                    values.put(DBHelper.row_name, name);
                     values.put(DBHelper.row_email, email);
                     values.put(DBHelper.row_password, password);
                     dbHelper.insertData(values);

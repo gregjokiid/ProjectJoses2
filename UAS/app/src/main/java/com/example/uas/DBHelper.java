@@ -12,20 +12,22 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String table_name = "table_login";
 
     public static final String row_id = "_id";
+
+    public static final String row_name = "Name";
     public static final String row_email = "Email";
     public static final String row_password = "Password";
 
     private SQLiteDatabase db;
 
     public DBHelper(Context context) {
-        super(context, database_name, null, 2);
+        super(context, database_name, null, 3);
         db = getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + table_name + "(" + row_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + row_email + " TEXT," + row_password + " TEXT)";
+                + row_name + " TEXT," + row_email + " TEXT," + row_password + " TEXT)";
         db.execSQL(query);
     }
 

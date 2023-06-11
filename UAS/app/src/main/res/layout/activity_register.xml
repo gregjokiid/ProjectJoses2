@@ -26,6 +26,13 @@
         android:inputType="textPersonName"
         android:visibility="gone"/>
     <EditText
+        android:id="@+id/txNameReg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+    <EditText
         android:id="@+id/txEmailReg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
