@@ -64,6 +64,10 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Field cannot be empty", Toast.LENGTH_SHORT).show();
                 }else if (name.length() < 5){
                     Toast.makeText(RegisterActivity.this, "Name at least five characters", Toast.LENGTH_SHORT).show();
+                }else if (!email.endsWith(".com")){
+                    Toast.makeText(RegisterActivity.this, "Email must end with .com", Toast.LENGTH_SHORT).show();
+                }else if (!password.matches("[A-Za-z0-9]+")){
+                    Toast.makeText(RegisterActivity.this, "Password must be alphanumeric", Toast.LENGTH_SHORT).show();
                 }else {
                     values.put(DBHelper.row_name, name);
                     values.put(DBHelper.row_email, email);
