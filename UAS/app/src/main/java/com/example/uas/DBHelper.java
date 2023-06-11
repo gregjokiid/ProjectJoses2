@@ -70,8 +70,4 @@ public class DBHelper extends SQLiteOpenHelper {
             return "false";
         }
     }
-
-    public String verified(){
-        //
-    }
 }
