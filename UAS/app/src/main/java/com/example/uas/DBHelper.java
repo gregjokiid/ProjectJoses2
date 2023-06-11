@@ -12,7 +12,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String table_name = "table_login";
 
     public static final String row_id = "_id";
-    public static final String row_username = "Username";
+    public static final String row_email = "Email";
     public static final String row_password = "Password";
 
     private SQLiteDatabase db;
@@ -25,7 +25,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + table_name + "(" + row_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + row_username + " TEXT," + row_password + " TEXT)";
+                + row_email + " TEXT," + row_password + " TEXT)";
         db.execSQL(query);
     }
 
@@ -40,11 +40,11 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean checkUser(String username, String password){
+    public boolean checkUser(String email, String password){
         String[] columns = {row_id};
         SQLiteDatabase db = getReadableDatabase();
-        String selection = row_username + "=?" + " and " + row_password + "=?";
-        String[] selectionArgs = {username,password};
+        String selection = row_email + "=?" + " and " + row_password + "=?";
+        String[] selectionArgs = {email,password};
         Cursor cursor = db.query(table_name, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
         cursor.close();

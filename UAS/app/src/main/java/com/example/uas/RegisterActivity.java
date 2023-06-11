@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText TxUsername, TxPassword, TxConPassword;
+    EditText TxEmail, TxPassword, TxConPassword;
     Button BtnRegister;
     DBHelper dbHelper;
 
@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(this);
 
-        TxUsername = (EditText)findViewById(R.id.txUsernameReg);
+        TxEmail = (EditText)findViewById(R.id.txEmailReg);
         TxPassword = (EditText)findViewById(R.id.txPasswordReg);
         TxConPassword = (EditText)findViewById(R.id.txConPassword);
         BtnRegister = (Button)findViewById(R.id.btnRegister);
@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
         BtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = TxUsername.getText().toString().trim();
+                String email = TxEmail.getText().toString().trim();
                 String password = TxPassword.getText().toString().trim();
                 String conPassword = TxConPassword.getText().toString().trim();
 
@@ -56,10 +56,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (!password.equals(conPassword)){
                     Toast.makeText(RegisterActivity.this, "Password not match", Toast.LENGTH_SHORT).show();
-                }else if (password.equals("") || username.equals("")){
-                    Toast.makeText(RegisterActivity.this, "Username or Password cannot be empty", Toast.LENGTH_SHORT).show();
+                }else if (password.equals("") || email.equals("")){
+                    Toast.makeText(RegisterActivity.this, "Email or Password cannot be empty", Toast.LENGTH_SHORT).show();
                 }else {
-                    values.put(DBHelper.row_username, username);
+                    values.put(DBHelper.row_email, email);
                     values.put(DBHelper.row_password, password);
                     dbHelper.insertData(values);
 
