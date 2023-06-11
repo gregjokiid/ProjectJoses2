@@ -1,8 +1,10 @@
-package com.example.uas;
+package com.example.uas.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.uas.R;
 
 public class MainActivity extends AppCompatActivity {
 
