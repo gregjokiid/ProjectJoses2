@@ -9,13 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String database_name = "bluejack";
-    public static final String table_name = "users";
-    public static final String row_id = "_id";
-    public static final String row_name = "Name";
-    public static final String row_email = "Email";
-    public static final String row_password = "Password";
-    public static final String row_phone = "Phone";
-    public static final String row_isVerified = "IsVerified";
+    public static final String table_user = "users";
+    public static final String row_user_id = "_id";
+    public static final String row_user_name = "Name";
+    public static final String row_user_email = "Email";
+    public static final String row_user_password = "Password";
+    public static final String row_user_phone = "Phone";
+    public static final String row_user_isVerified = "IsVerified";
 
     private SQLiteDatabase db;
 
@@ -26,34 +26,34 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + table_name + "(" + row_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + row_name + " TEXT," + row_email + " TEXT," + row_password + " TEXT," + row_phone + " TEXT," + row_isVerified + " TEXT)";
+        String query = "CREATE TABLE " + table_user + "(" + row_user_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + row_user_name + " TEXT," + row_user_email + " TEXT," + row_user_password + " TEXT," + row_user_phone + " TEXT," + row_user_isVerified + " TEXT)";
         db.execSQL(query);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + table_name);
+        db.execSQL("DROP TABLE IF EXISTS " + table_user);
     }
 
     //Insert Data
     public void insertData(ContentValues values){
-        db.insert(table_name, null, values);
+        db.insert(table_user, null, values);
     }
 
 
     public String checkUser(String email, String password){
-        String[] columns = {row_id, row_isVerified};
+        String[] columns = {row_user_id, row_user_isVerified};
         SQLiteDatabase db = getReadableDatabase();
-        String selection = row_email + "=?" + " and " + row_password + "=?";
+        String selection = row_user_email + "=?" + " and " + row_user_password + "=?";
         String[] selectionArgs = {email, password};
-        Cursor cursor = db.query(table_name, columns, selection, selectionArgs, null, null, null);
+        Cursor cursor = db.query(table_user, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
 
         String isVerified = "";
 
         if (cursor.moveToFirst()) {
-            int isVerifiedIndex = cursor.getColumnIndex(row_isVerified);
+            int isVerifiedIndex = cursor.getColumnIndex(row_user_isVerified);
             isVerified = cursor.getString(isVerifiedIndex);
         }
 
