@@ -8,14 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String database_name = "db_login";
-    public static final String table_name = "table_login";
-    public static final String row_id = "_id";
-    public static final String row_name = "Name";
-    public static final String row_email = "Email";
-    public static final String row_password = "Password";
-    public static final String row_phone = "Phone";
-    public static final String row_isVerified = "IsVerified";
+    public static final String database_name = "bluejack";
+    public static final String table_name = "users";
+    public static final String users_row_id = "_id";
+    public static final String users_row_name = "Name";
+    public static final String users_row_email = "Email";
+    public static final String users_row_password = "Password";
+    public static final String users_row_phone = "Phone";
+    public static final String users_row_isVerified = "IsVerified";
 
     private SQLiteDatabase db;
 
@@ -26,8 +26,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + table_name + "(" + row_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + row_name + " TEXT," + row_email + " TEXT," + row_password + " TEXT," + row_phone + " TEXT," + row_isVerified + " TEXT)";
+        String query = "CREATE TABLE " + table_name + "(" + users_row_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + users_row_name + " TEXT," + users_row_email + " TEXT," + users_row_password + " TEXT," + users_row_phone + " TEXT," + users_row_isVerified + " TEXT)";
         db.execSQL(query);
     }
 
@@ -43,9 +43,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     public String checkUser(String email, String password){
-        String[] columns = {row_id, row_isVerified};
+        String[] columns = {users_row_id, users_row_isVerified};
         SQLiteDatabase db = getReadableDatabase();
-        String selection = row_email + "=?" + " and " + row_password + "=?";
+        String selection = users_row_email + "=?" + " and " + users_row_password + "=?";
         String[] selectionArgs = {email, password};
         Cursor cursor = db.query(table_name, columns, selection, selectionArgs, null, null, null);
         int count = cursor.getCount();
@@ -53,7 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
         String isVerified = "";
 
         if (cursor.moveToFirst()) {
-            int isVerifiedIndex = cursor.getColumnIndex(row_isVerified);
+            int isVerifiedIndex = cursor.getColumnIndex(users_row_isVerified);
             isVerified = cursor.getString(isVerifiedIndex);
         }
 
