@@ -30,33 +30,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.option_menu, menu);
-
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-
-        if (searchManager != null) {
-            SearchView searchView = (SearchView) (menu.findItem(R.id.search)).getActionView();
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-            searchView.setQueryHint(getResources().getString(R.string.search_hint));
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                /*
-                Gunakan method ini ketika search selesai atau OK
-                 */
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
-                    searchView.clearFocus();
-                    return true;
-                }
-
-                /*
-                Gunakan method ini untuk merespon tiap perubahan huruf pada searchView
-                 */
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    return false;
-                }
-            });
-        }
         return true;
     }
 
