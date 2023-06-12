@@ -26,21 +26,17 @@ public class SendOTPActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_otpactivity);
 
-        //init
         final EditText inputMobile = findViewById(R.id.inputMobile);
         final Button buttonGetOTP = findViewById(R.id.buttonGetOTP);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
 
         buttonGetOTP.setOnClickListener(v -> {
-            //toast error
             if(inputMobile.getText().toString().isEmpty()){
                 Toast.makeText(SendOTPActivity.this, "Enter mobile", Toast.LENGTH_SHORT).show();
                 return;
             }
-            //set visibility
             buttonGetOTP.setVisibility(View.INVISIBLE);
             progressBar.setVisibility(View.VISIBLE);
-            //verify phone number
             PhoneAuthOptions options =
                     PhoneAuthOptions.newBuilder()
                             .setPhoneNumber("+84"+inputMobile.getText().toString())
@@ -75,5 +71,4 @@ public class SendOTPActivity extends AppCompatActivity {
             PhoneAuthProvider.verifyPhoneNumber(options);
         });
     }
-
 }

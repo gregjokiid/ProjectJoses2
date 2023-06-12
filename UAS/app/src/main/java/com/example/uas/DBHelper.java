@@ -36,7 +36,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + table_user);
     }
 
-    //Insert Data
     public void insertData(ContentValues values){
         db.insert(table_user, null, values);
     }

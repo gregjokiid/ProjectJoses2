@@ -101,7 +101,6 @@ public class VerifyOTPActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.textResendOTP).setOnClickListener(v -> {
-            //verify phone number
             PhoneAuthOptions options =
                     PhoneAuthOptions.newBuilder()
                             .setPhoneNumber("+84"+getIntent().getStringExtra("mobile"))
@@ -134,16 +133,12 @@ public class VerifyOTPActivity extends AppCompatActivity {
         verificationId = getIntent().getStringExtra("verificationId");
     }
 
-    /** If Intent() getStringExtra == "mobile" -> startActivity(VerifyActivity),
-     * (TextView) textMobile will be received value "user mobile number"*/
     private void setTextMobile(){
         textMobile.setText(String.format(
                 "+84-%s",getIntent().getStringExtra("mobile")
         ));
     }
 
-    /** When the edittext1 (inputCode1) was inserted, the cursor will be jump to the
-     * next edittext (in this case it would be "inputCode2")*/
     private void setupOTPInputs(){
         inputCode1.addTextChangedListener(new TextWatcher() {
             @Override

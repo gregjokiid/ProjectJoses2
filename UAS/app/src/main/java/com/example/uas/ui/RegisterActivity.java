@@ -60,7 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 ContentValues values = new ContentValues();
 
-
                 if (!password.equals(conPassword)){
                     Toast.makeText(RegisterActivity.this, "Password not match", Toast.LENGTH_SHORT).show();
                 }else if (password.equals("") || email.equals("") || name.equals("") || phone.equals("")){
@@ -84,8 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     public static Spanned fromHtml(String html){

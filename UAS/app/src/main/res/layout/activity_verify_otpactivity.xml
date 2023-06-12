@@ -6,20 +6,17 @@
     android:overScrollMode="never"
     android:scrollbars="none"
     tools:context=".ui.VerifyOTPActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical">
-
         <ImageView
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="80dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_received"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +25,6 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@color/text_primary"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +35,6 @@
             android:text="@string/enter_the_otp_sent_to"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"/>
-
         <TextView
             android:id="@+id/textMobile"
             android:layout_width="match_parent"
@@ -51,14 +46,12 @@
             android:textColor="@color/text_primary"
             android:textSize="14sp"
             android:textStyle="bold" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:orientation="horizontal">
-
             <EditText
                 android:id="@+id/inputCode1"
                 android:layout_width="40dp"
@@ -72,7 +65,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
-
             <EditText
                 android:id="@+id/inputCode2"
                 android:layout_width="40dp"
@@ -87,7 +79,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
-
             <EditText
                 android:id="@+id/inputCode3"
                 android:layout_width="40dp"
@@ -102,7 +93,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
-
             <EditText
                 android:id="@+id/inputCode4"
                 android:layout_width="40dp"
@@ -117,7 +107,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
-
             <EditText
                 android:id="@+id/inputCode5"
                 android:layout_width="40dp"
@@ -132,7 +121,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
-
             <EditText
                 android:id="@+id/inputCode6"
                 android:layout_width="40dp"
@@ -147,23 +135,19 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 tools:ignore="LabelFor"/>
-
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/didn_t_receive_the_otp"
                 android:textColor="@color/text_secondary"
                 android:textSize="14sp"/>
-
             <TextView
                 android:id="@+id/textResendOTP"
                 android:layout_width="wrap_content"
@@ -174,11 +158,9 @@
                 android:textStyle="bold"
                 android:textSize="15sp"/>
         </LinearLayout>
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <Button
                 android:id="@+id/buttonVerify"
                 android:layout_width="match_parent"
@@ -189,7 +171,6 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="16sp"/>
-
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="40dp"
@@ -197,8 +178,5 @@
                 android:layout_gravity="center"
                 android:visibility="gone"/>
         </FrameLayout>
-
-
     </LinearLayout>
-
 </ScrollView>

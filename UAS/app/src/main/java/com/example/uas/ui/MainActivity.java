@@ -24,33 +24,29 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnItemSelectedListener(navListner);
 
-        //f statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new HomeFragment()).commit();
         }
-
     }
 
-    private NavigationBarView.OnItemSelectedListener navListner =
-            new NavigationBarView.OnItemSelectedListener(){
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-                    if (item.getItemId() == R.id.home){
-                      selectedFragment = new HomeFragment();
-                    }
-                    else if (item.getItemId() == R.id.transaction){
-                        selectedFragment = new TransactionFragment();
-                    }
-                    else if (item.getItemId() == R.id.about_us){
-                        selectedFragment = new AboutUsFragment();
-                    }
+    private NavigationBarView.OnItemSelectedListener navListner = new NavigationBarView.OnItemSelectedListener(){
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
+            if (item.getItemId() == R.id.home){
+                selectedFragment = new HomeFragment();
+            }
+            else if (item.getItemId() == R.id.transaction){
+                selectedFragment = new TransactionFragment();
+            }
+            else if (item.getItemId() == R.id.about_us){
+                selectedFragment = new AboutUsFragment();
+            }
 
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-                    return true;
-                }
-            };
-
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    selectedFragment).commit();
+            return true;
+        }
+    };
 }
