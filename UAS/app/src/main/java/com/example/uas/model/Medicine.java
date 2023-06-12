@@ -1,40 +1,40 @@
 package com.example.uas.model;
 
 public class Medicine {
-    private String newsTitle;
-    private String newsDetail;
-    private String newsAuthor;
-    private int newsImage;
+    private String title;
+    private String detail;
+    private String author;
+    private int image;
 
-    public String getNewsTitle() {
-        return newsTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setNewsTitle(String newsTitle) {
-        this.newsTitle = newsTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getNewsDetail() {
-        return newsDetail;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setNewsDetail(String newsDetail) {
-        this.newsDetail = newsDetail;
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
-    public String getNewsAuthor() {
-        return newsAuthor;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setNewsAuthor(String newsAuthor) {
-        this.newsAuthor = newsAuthor;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public int getNewsImage() {
-        return newsImage;
+    public int getImage() {
+        return image;
     }
 
-    public void setNewsImage(int newsImage) {
-        this.newsImage = newsImage;
+    public void setImage(int image) {
+        this.image = image;
     }
 }

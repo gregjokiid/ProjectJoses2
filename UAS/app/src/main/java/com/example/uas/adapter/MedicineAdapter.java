@@ -27,16 +27,16 @@ public class MedicineAdapter extends RecyclerView.Adapter<com.example.uas.adapte
         this.onItemClickCallBack = onItemClickCallBack;
     }
 
-    private final ArrayList<Medicine> newsList;
+    private final ArrayList<Medicine> medicineList;
 
     public MedicineAdapter(ArrayList<Medicine> list){
-        this.newsList = list;
+        this.medicineList = list;
     }
 
     @NonNull
     @Override
     public com.example.uas.adapter.MedicineAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_row_news, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_row_medicine, viewGroup, false);
         return new com.example.uas.adapter.MedicineAdapter.ListViewHolder(view);
     }
 
@@ -44,26 +44,26 @@ public class MedicineAdapter extends RecyclerView.Adapter<com.example.uas.adapte
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull final com.example.uas.adapter.MedicineAdapter.ListViewHolder holder, int position) {
-        Medicine news = newsList.get(position);
+        Medicine medicine = medicineList.get(position);
         Glide.with(holder.itemView.getContext())
-                .load((news.getNewsImage()))
+                .load((medicine.getImage()))
                 .apply(new RequestOptions().override(55,55))
                 .into(holder.imgPhoto);
-        holder.tvName.setText(news.getNewsTitle());
+        holder.tvName.setText(medicine.getTitle());
         holder.tvDetail.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        holder.tvDetail.setText(news.getNewsDetail());
+        holder.tvDetail.setText(medicine.getDetail());
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                onItemClickCallBack.onItemClicked(newsList.get(holder.getAdapterPosition()));
+                onItemClickCallBack.onItemClicked(medicineList.get(holder.getAdapterPosition()));
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        return medicineList.size();
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {

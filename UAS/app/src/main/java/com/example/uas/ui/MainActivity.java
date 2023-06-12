@@ -26,7 +26,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView rvNews;
+    private RecyclerView rvMedicine;
     private ArrayList<Medicine> list = new ArrayList<>();
 
     @Override
@@ -34,33 +34,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rvNews = findViewById(R.id.rv_news);
-        rvNews.setHasFixedSize(true);
+        rvMedicine = findViewById(R.id.rv_news);
+        rvMedicine.setHasFixedSize(true);
 
         list.addAll(MedicineData.getListData());
         showRecyclerList();
     }
 
     private void showRecyclerList() {
-        rvNews.setLayoutManager(new LinearLayoutManager(this));
-        MedicineAdapter newsAdapter = new MedicineAdapter(list);
-        rvNews.setAdapter(newsAdapter);
+        rvMedicine.setLayoutManager(new LinearLayoutManager(this));
+        MedicineAdapter medicineAdapter = new MedicineAdapter(list);
+        rvMedicine.setAdapter(medicineAdapter);
 
-        newsAdapter.setOnItemClickCallBack(new MedicineAdapter.OnItemClickCallBack() {
+        medicineAdapter.setOnItemClickCallBack(new MedicineAdapter.OnItemClickCallBack() {
             @Override
             public void onItemClicked(Medicine data) {
-                ShowNews(data);
+                ShowMedicine(data);
             }
         });
     }
 
-    private void ShowNews(Medicine news) {
+    private void ShowMedicine(Medicine medicine) {
         Intent directintent = new Intent(MainActivity.this, DetailActivity.class);
-        Toast.makeText(this, news.getNewsTitle(), Toast.LENGTH_SHORT).show();
-        directintent.putExtra("news_image", news.getNewsImage());
-        directintent.putExtra("news_title", news.getNewsTitle());
-        directintent.putExtra("news_author", news.getNewsAuthor());
-        directintent.putExtra("news_detail", news.getNewsDetail());
+        Toast.makeText(this, medicine.getTitle(), Toast.LENGTH_SHORT).show();
+        directintent.putExtra("medicine_image", medicine.getImage());
+        directintent.putExtra("medicine_title", medicine.getTitle());
+        directintent.putExtra("medicine_author", medicine.getAuthor());
+        directintent.putExtra("medicine_detail", medicine.getDetail());
         startActivity(directintent);
     }
 
