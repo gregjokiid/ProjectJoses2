@@ -36,18 +36,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu1) {
-            /*
-            Ketika menu ditekan maka akan memunculkan fragment,
-            fragment di tambahkan ke dalam backstack sehingga ketika ditekan back akan kembali ke MainActivity
-            */
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new MenuFragment())
-                    .addToBackStack(null)
-                    .commit();
+            startActivity(new Intent(this, LoginActivity.class));
             return true;
         } else if (item.getItemId() == R.id.menu2) {
-            Intent i = new Intent(this, MenuActivity.class);
-            startActivity(i);
+            startActivity(new Intent(this, MenuActivity.class));
             return true;
         } else {
             return true;
