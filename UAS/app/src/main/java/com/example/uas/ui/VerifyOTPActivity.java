@@ -103,7 +103,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
         findViewById(R.id.textResendOTP).setOnClickListener(v -> {
             PhoneAuthOptions options =
                     PhoneAuthOptions.newBuilder()
-                            .setPhoneNumber("+84"+getIntent().getStringExtra("mobile"))
+                            .setPhoneNumber("+62"+getIntent().getStringExtra("mobile"))
                             .setTimeout(60L, TimeUnit.SECONDS)
                             .setActivity(this)
                             .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -135,7 +135,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
 
     private void setTextMobile(){
         textMobile.setText(String.format(
-                "+84-%s",getIntent().getStringExtra("mobile")
+                "+62-%s",getIntent().getStringExtra("mobile")
         ));
     }
 

@@ -39,7 +39,7 @@ public class SendOTPActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             PhoneAuthOptions options =
                     PhoneAuthOptions.newBuilder()
-                            .setPhoneNumber("+84"+inputMobile.getText().toString())
+                            .setPhoneNumber("+62"+inputMobile.getText().toString())
                             .setTimeout(60L, TimeUnit.SECONDS)
                             .setActivity(this)
                             .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
