@@ -57,7 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                 String res = dbHelper.checkUser(email,password);
                 if(res == "otp"){
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, SendOTPActivity.class));
+                    Intent intent = new Intent(LoginActivity.this, SendOTPActivity.class);
+                    intent.putExtra("email", email);
+                    startActivity(intent);
                 }else if(res == "true"){
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
