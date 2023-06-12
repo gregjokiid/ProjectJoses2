@@ -61,7 +61,10 @@ public class SendOTPActivity extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     buttonGetOTP.setVisibility(View.VISIBLE);
                                     //action
+                                    String email = getIntent().getStringExtra("email");
+
                                     Intent intent = new Intent(getApplicationContext(),VerifyOTPActivity.class);
+                                    intent.putExtra("email", email);
                                     intent.putExtra("mobile",inputMobile.getText().toString());
                                     intent.putExtra("verificationId",verificationId);
                                     startActivity(intent);
