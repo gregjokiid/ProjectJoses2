@@ -32,9 +32,9 @@ public class MapsFragment extends Fragment {
                     public void onMapClick(@NonNull LatLng latLng) {
                         MarkerOptions markerOptions = new MarkerOptions();
                         markerOptions.position(latLng);
-                        markerOptions.title("bluejack");
+                        markerOptions.title("Bluejack Pharmacy");
                         googleMap.clear();
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                         googleMap.addMarker(markerOptions);
                     }
                 });
@@ -43,7 +43,7 @@ public class MapsFragment extends Fragment {
                 LatLng bluejackLatLng = new LatLng(-6.20201, 106.78113);
                 MarkerOptions bluejackMarkerOptions = new MarkerOptions()
                         .position(bluejackLatLng)
-                        .title("bluejack");
+                        .title("Bluejack Pharmacy");
                 googleMap.addMarker(bluejackMarkerOptions);
 
                 // Move the camera to the marker's position
