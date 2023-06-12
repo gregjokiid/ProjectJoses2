@@ -21,7 +21,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
 
     List<Medicine> listMedicine = new ArrayList<>();
 
-    public void setData(List<Medicine> listMedicine) {
+    void setData(List<Medicine> listMedicine) {
         this.listMedicine.clear();
         this.listMedicine.addAll(listMedicine);
         notifyDataSetChanged();
