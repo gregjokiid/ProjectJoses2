@@ -8,9 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.uas.R;
-import com.example.uas.ui.fragment.AboutUsFragment;
-import com.example.uas.ui.fragment.HomeFragment;
-import com.example.uas.ui.fragment.TransactionFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
