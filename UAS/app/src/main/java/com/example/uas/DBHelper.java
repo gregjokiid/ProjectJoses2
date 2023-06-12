@@ -73,11 +73,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public void updateUserIsVerified(String email) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(row_user_isVerified, "1"); // Nilai yang ingin diubah
+        values.put(row_user_isVerified, "1");
         String whereClause = row_user_email + "=?";
         String[] whereArgs = {email};
         db.update(table_user, values, whereClause, whereArgs);
         db.close();
     }
-
 }

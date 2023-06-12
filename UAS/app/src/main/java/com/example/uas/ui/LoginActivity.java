@@ -79,4 +79,3 @@ public class LoginActivity extends AppCompatActivity {
         return result;
     }
 }
-
