@@ -2,10 +2,17 @@ package com.example.uas.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.uas.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,33 +24,60 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
-        bottomNav.setOnItemSelectedListener(navListner);
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new HomeFragment()).commit();
-        }
     }
 
-    private NavigationBarView.OnItemSelectedListener navListner = new NavigationBarView.OnItemSelectedListener(){
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
-            if (item.getItemId() == R.id.home){
-                selectedFragment = new HomeFragment();
-            }
-            else if (item.getItemId() == R.id.transaction){
-                selectedFragment = new TransactionFragment();
-            }
-            else if (item.getItemId() == R.id.about_us){
-                selectedFragment = new AboutUsFragment();
-            }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    selectedFragment).commit();
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+
+        if (searchManager != null) {
+            SearchView searchView = (SearchView) (menu.findItem(R.id.search)).getActionView();
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            searchView.setQueryHint(getResources().getString(R.string.search_hint));
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                /*
+                Gunakan method ini ketika search selesai atau OK
+                 */
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Toast.makeText(MainActivity.this, query, Toast.LENGTH_SHORT).show();
+                    searchView.clearFocus();
+                    return true;
+                }
+
+                /*
+                Gunakan method ini untuk merespon tiap perubahan huruf pada searchView
+                 */
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return false;
+                }
+            });
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu1) {
+            /*
+            Ketika menu ditekan maka akan memunculkan fragment,
+            fragment di tambahkan ke dalam backstack sehingga ketika ditekan back akan kembali ke MainActivity
+            */
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new MenuFragment())
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        } else if (item.getItemId() == R.id.menu2) {
+            Intent i = new Intent(this, MenuActivity.class);
+            startActivity(i);
+            return true;
+        } else {
             return true;
         }
-    };
+    }
 }
