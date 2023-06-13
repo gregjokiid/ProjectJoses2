@@ -16,10 +16,10 @@
     <string name="this_activity">Ini adalah menu activity</string>
     <string name="this_fragment">Ini adalah menu fragment</string>
 
-    <string name="newsTitle">News Title</string>
-    <string name="newsDetail">News Detail</string>
-    <string name="newsAuthor">News Author</string>
-    <string name="newsImage">News Image</string>
+    <string name="medicineTitle">Medicine Title</string>
+    <string name="medicineDetail">Medicine Detail</string>
+    <string name="medicineAuthor">Medicine Author</string>
+    <string name="medicineImage">Medicine Image</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

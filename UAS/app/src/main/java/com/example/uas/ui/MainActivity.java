@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rvMedicine = findViewById(R.id.rv_news);
+        rvMedicine = findViewById(R.id.rv_medicine);
         rvMedicine.setHasFixedSize(true);
 
         list.addAll(MedicineData.getListData());
