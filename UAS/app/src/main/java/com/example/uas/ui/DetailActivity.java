@@ -18,7 +18,7 @@ import com.example.uas.R;
 
 public class DetailActivity extends AppCompatActivity {
     ImageView tvMedicineImage;
-    TextView tvMedicineName, tvMedicineDescription, tvMedicineAuthor;
+    TextView tvMedicineName, tvMedicineManufacturer, tvMedicinePrice, tvMedicineDescription;
 
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -33,21 +33,24 @@ public class DetailActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         tvMedicineName = findViewById(R.id.tv_medicineName);
+        tvMedicineManufacturer = findViewById(R.id.tv_medicineManufacturer);
+        tvMedicinePrice = findViewById(R.id.tv_medicinePrice);
         tvMedicineImage = findViewById(R.id.tv_medicineImage);
-        tvMedicineAuthor = findViewById(R.id.tv_medicineAuthor);
         tvMedicineDescription = findViewById(R.id.tv_medicineDescription);
 
         int medicineImage = getIntent().getIntExtra("medicine_image", 0);
         String medicineName = getIntent().getStringExtra("medicine_name");
+        String medicineManufacturer = getIntent().getStringExtra("medicine_manufacturer");
+        String medicinePrice = getIntent().getStringExtra("medicine_price");
         String medicineDescription = getIntent().getStringExtra("medicine_description");
-        String medicineAuthor = getIntent().getStringExtra("medicine_author");
 
         Glide.with(this).asBitmap().load(medicineImage).into(tvMedicineImage);
 
         tvMedicineName.setText(medicineName);
+        tvMedicineManufacturer.setText(medicineManufacturer);
+        tvMedicinePrice.setText(medicinePrice);
         tvMedicineDescription.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
         tvMedicineDescription.setText(medicineDescription);
-        tvMedicineAuthor.setText(medicineAuthor);
     }
 
     @Override

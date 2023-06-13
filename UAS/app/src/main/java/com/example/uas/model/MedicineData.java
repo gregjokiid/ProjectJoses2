@@ -10,15 +10,19 @@ public class MedicineData {
             //
     };
 
-    private static final String[] description = {
+    private static final String[] manufacturer = {
             //
     };
 
-    private static final String[] author = {
+    private static final String[] price = {
             //
     };
 
     private static final int[] image = {
+            //
+    };
+
+    private static final String[] description = {
             //
     };
 
@@ -27,9 +31,10 @@ public class MedicineData {
         for(int position = 0; position < name.length; position++) {
             Medicine medicine = new Medicine();
             medicine.setName(name[position]);
-            medicine.setDescription(description[position]);
-            medicine.setAuthor(author[position]);
+            medicine.setManufacturer(manufacturer[position]);
+            medicine.setPrice(price[position]);
             medicine.setImage(image[position]);
+            medicine.setDescription(description[position]);
             list.add(medicine);
         }
         return list;

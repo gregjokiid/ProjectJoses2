@@ -17,9 +17,10 @@
     <string name="this_fragment">Ini adalah menu fragment</string>
 
     <string name="medicineName">Medicine Name</string>
-    <string name="medicineDescription">Medicine Description</string>
-    <string name="medicineAuthor">Medicine Author</string>
+    <string name="medicineManufacturer">Medicine Manufacturer</string>
+    <string name="medicinePrice">Medicine Price</string>
     <string name="medicineImage">Medicine Image</string>
+    <string name="medicineDescription">Medicine Description</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

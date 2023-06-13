@@ -27,8 +27,16 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/tv_medicineAuthor"
-        android:text="@string/medicineAuthor"
+        android:id="@+id/tv_medicineManufacturer"
+        android:text="@string/medicineManufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tv_medicinePrice"
+        android:text="@string/medicinePrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"

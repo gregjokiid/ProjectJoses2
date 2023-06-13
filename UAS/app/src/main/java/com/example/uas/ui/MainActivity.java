@@ -59,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, medicine.getName(), Toast.LENGTH_SHORT).show();
         directintent.putExtra("medicine_image", medicine.getImage());
         directintent.putExtra("medicine_name", medicine.getName());
-        directintent.putExtra("medicine_author", medicine.getAuthor());
+        directintent.putExtra("medicine_manufacturer", medicine.getManufacturer());
+        directintent.putExtra("medicine_price", medicine.getPrice());
         directintent.putExtra("medicine_description", medicine.getDescription());
         startActivity(directintent);
     }

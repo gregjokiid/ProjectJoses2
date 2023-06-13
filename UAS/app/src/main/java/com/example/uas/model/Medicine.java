@@ -1,9 +1,7 @@
 package com.example.uas.model;
 
 public class Medicine {
-    private String name;
-    private String description;
-    private String author;
+    private String name, manufacturer, price, description;
     private int image;
 
     public String getName() {
@@ -14,20 +12,20 @@ public class Medicine {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getManufacturer() {
+        return manufacturer;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getPrice() {
+        return price;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public int getImage() {
@@ -36,5 +34,13 @@ public class Medicine {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
