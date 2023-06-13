@@ -16,8 +16,8 @@
     <string name="this_activity">Ini adalah menu activity</string>
     <string name="this_fragment">Ini adalah menu fragment</string>
 
-    <string name="medicineTitle">Medicine Title</string>
-    <string name="medicineDetail">Medicine Detail</string>
+    <string name="medicineName">Medicine Name</string>
+    <string name="medicineDescription">Medicine Description</string>
     <string name="medicineAuthor">Medicine Author</string>
     <string name="medicineImage">Medicine Image</string>
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class MedicineData {
 
-    private static final String[] title = {
+    private static final String[] name = {
             "Rumor Player Filipina Kelra Gabung ONIC Esports Menguat, Ini Buktinya!",
             "Profil Vonzy, Brand Ambassador Berparas Cantik dari ONIC Esports",
             "3 Hal yang Dievaluasi ONIC Esports untuk M4 World Championship",
@@ -19,7 +19,7 @@ public class MedicineData {
             "Sempat Unggul, BTR Alpha Gagal Comeback ONIC. Ini Analisa Coach Aldo!"
     };
 
-    private static final String[] detail = {
+    private static final String[] description = {
             "Dalam beberapa waktu terakhir, skena esports Indonesia tengah diramaikan dengan rumor hijrahnya Kelra ke tim Indonesia. Ada dua tim esports Indonesia yang kerap dihubung-hubungkan dengan player asal Filipina itu, yakni ONIC Esports dan RRQ Hoshi. Namun belakangan rumor Kelra bergabung ke ONIC Esports cenderung menguat dibanding ke RRQ Hoshi. GridGames telah merangkum beberapa bukti yang memperkuat dugaan bergabungnya Kelra ke ONIC Esports. Rumor bergabungnya Kelra ke tim Indonesia pertama muncul dari sang player-nya sendiri. Beberapa waktu lalu, Kelra sempat mengunggah IG Story emoticon mata diikuti dengan bendera Indonesia dan Malaysia serta emoticon bingung. Kelra seakan mengindikasikan bakal pindah ke Indonesia atau Malaysia lewat unggahan tersebut. Kemudian setelah itu, selang beberapa waktu Kelra kembali membuat IG Story emoticon love berwarna kuning dan oren diikuti dengan tanda tanya. Hal tersebut secara tidak langsung menyiratkan ada dua tim yang memberi penawaran dan disinyalir tim itu adalah ONIC Esports dan RRQ Hoshi.",
             "Nama Vonzy belakangan ini mengundang perhatian para penggemar game dan esports, khususnya kaum adam. Vonzy merupakan seorang Brand Ambassador dari tim esports Indonesia, ONIC Esports, yang memiliki paras cantik. Cewek bernama asli Vonny Felicia ini merupakan gadis cantik asal Kota Bogor yang kini berusia 22 tahun. Vonzy awalnya bergabung menjadi talent ONIC Angel pada tahun 2019 silam, sebelum akhirnya menjadi Brand Ambassador di awal tahun 2022. Sebelum bergabung ke ONIC Esports, Vonzy pernah mendapatkan tawaran dari tim esports lain untuk menjadi talent. Vonzy sendiri diketahui gemar bermain game PUBG Mobile dan Mobile Legends: Bang Bang (MLBB). Cewek kelahiran tahun 2000 ini memulai terjun ke dunia entertainment sejak SMA sebagai gadis sampul di tahun 2016 silam. Setelah debutnya, Vonzy pun sempat menjadi bintang iklan hingga mengadu akting di sebuah  web series saat ia aktif berkuliah.",
             "Perjalanan ONIC Esports belum selesai meski mereka telah menjadi juara MPL ID S10. ONIC Esports masih akan menghadapi tantangan berat di ajang M4 World Championship. MPL ID S10 pun menjadi tempat ONIC Esports untuk mempersiapkan diri di piala dunianya Mobile Legends itu. Coach ONIC Esports, Aldo mengungkapkan ada 3 hal yang dievaluasi agar timnya bisa tampil lebih baik di M4 World Championship nanti. Ketiga hal itu terdiri dari mental, komunikasi, dan konsistensi permainan. Hal tersebut disampaikannya dalam sesi media interview grand final MPL ID S10, Minggu (23/10/2022). \"Yang pasti satu mentalnya tuh harus dikembangin lagi diasah lagi karena mungkin ada beberapa player yang masih kena mental block lah, ONIC di turnamen internasional turu atau segala macem, itu yang ingin kita buang jauh-jauh,\" ujar Aldo kepada GridGames. \"Terus yang kedua komunikasi sih, karena nanti lawan tim internasional itu udah nggak boleh lagi ada kayak mistake-mistake kecil tuh pasti bakal di-punish sama mereka,\" lanjutnya. Menurut Aldo saat ini sebenarnya komunikasi anak-anak ONIC Esports sudah cukup baik. Namun hal tersebut masih bisa dikembangkan lagi ke depannya.",
@@ -60,10 +60,10 @@ public class MedicineData {
 
     public static ArrayList<Medicine> getListData() {
         ArrayList<Medicine> list = new ArrayList<>();
-        for(int position = 0; position < title.length; position++) {
+        for(int position = 0; position < name.length; position++) {
             Medicine medicine = new Medicine();
-            medicine.setTitle(title[position]);
-            medicine.setDetail(detail[position]);
+            medicine.setName(name[position]);
+            medicine.setDescription(description[position]);
             medicine.setAuthor(author[position]);
             medicine.setImage(image[position]);
             list.add(medicine);

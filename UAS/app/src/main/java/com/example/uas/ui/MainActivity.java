@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void ShowMedicine(Medicine medicine) {
         Intent directintent = new Intent(MainActivity.this, DetailActivity.class);
-        Toast.makeText(this, medicine.getTitle(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, medicine.getName(), Toast.LENGTH_SHORT).show();
         directintent.putExtra("medicine_image", medicine.getImage());
-        directintent.putExtra("medicine_title", medicine.getTitle());
+        directintent.putExtra("medicine_name", medicine.getName());
         directintent.putExtra("medicine_author", medicine.getAuthor());
-        directintent.putExtra("medicine_detail", medicine.getDetail());
+        directintent.putExtra("medicine_description", medicine.getDescription());
         startActivity(directintent);
     }
 

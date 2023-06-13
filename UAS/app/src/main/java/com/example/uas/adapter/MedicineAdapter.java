@@ -49,9 +49,9 @@ public class MedicineAdapter extends RecyclerView.Adapter<com.example.uas.adapte
                 .load((medicine.getImage()))
                 .apply(new RequestOptions().override(55,55))
                 .into(holder.imgPhoto);
-        holder.tvName.setText(medicine.getTitle());
-        holder.tvDetail.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        holder.tvDetail.setText(medicine.getDetail());
+        holder.tvName.setText(medicine.getName());
+        holder.tvDescription.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+        holder.tvDescription.setText(medicine.getDescription());
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -68,13 +68,13 @@ public class MedicineAdapter extends RecyclerView.Adapter<com.example.uas.adapte
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView imgPhoto;
-        TextView tvName, tvDetail;
+        TextView tvName, tvDescription;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             imgPhoto = itemView.findViewById(R.id.img_item_photo);
             tvName = itemView.findViewById(R.id.tv_item_name);
-            tvDetail = itemView.findViewById(R.id.tv_item_detail);
+            tvDescription = itemView.findViewById(R.id.tv_item_description);
         }
     }
 

@@ -18,10 +18,10 @@
         android:contentDescription="@string/medicineImage" />
 
     <TextView
-        android:id="@+id/tv_medicineTitle"
+        android:id="@+id/tv_medicineName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/medicineTitle"
+        android:text="@string/medicineName"
         android:padding="20dp"
         android:textSize="18sp"
         android:textStyle="bold"/>
@@ -40,8 +40,8 @@
         android:layout_margin="10dp">
 
         <TextView
-            android:id="@+id/tv_medicineDetail"
-            android:text="@string/medicineDetail"
+            android:id="@+id/tv_medicineDescription"
+            android:text="@string/medicineDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"

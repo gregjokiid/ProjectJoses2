@@ -18,7 +18,7 @@ import com.example.uas.R;
 
 public class DetailActivity extends AppCompatActivity {
     ImageView tvMedicineImage;
-    TextView tvMedicineTitle, tvMedicineDetail, tvMedicineAuthor;
+    TextView tvMedicineName, tvMedicineDescription, tvMedicineAuthor;
 
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -32,21 +32,21 @@ public class DetailActivity extends AppCompatActivity {
         actionBar.setTitle("ONIC Fans Apps");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        tvMedicineTitle = findViewById(R.id.tv_medicineTitle);
+        tvMedicineName = findViewById(R.id.tv_medicineName);
         tvMedicineImage = findViewById(R.id.tv_medicineImage);
         tvMedicineAuthor = findViewById(R.id.tv_medicineAuthor);
-        tvMedicineDetail = findViewById(R.id.tv_medicineDetail);
+        tvMedicineDescription = findViewById(R.id.tv_medicineDescription);
 
         int medicineImage = getIntent().getIntExtra("medicine_image", 0);
-        String medicineTitle = getIntent().getStringExtra("medicine_title");
-        String medicineDetail = getIntent().getStringExtra("medicine_detail");
+        String medicineName = getIntent().getStringExtra("medicine_name");
+        String medicineDescription = getIntent().getStringExtra("medicine_description");
         String medicineAuthor = getIntent().getStringExtra("medicine_author");
 
         Glide.with(this).asBitmap().load(medicineImage).into(tvMedicineImage);
 
-        tvMedicineTitle.setText(medicineTitle);
-        tvMedicineDetail.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        tvMedicineDetail.setText(medicineDetail);
+        tvMedicineName.setText(medicineName);
+        tvMedicineDescription.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+        tvMedicineDescription.setText(medicineDescription);
         tvMedicineAuthor.setText(medicineAuthor);
     }
 
