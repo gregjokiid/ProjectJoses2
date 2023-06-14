@@ -16,9 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyActionsBar"
         tools:targetApi="31">
-        <activity
-            android:name=".ui.TransactionActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
