@@ -1,8 +1,16 @@
 package com.example.uas.model;
 
 public class Medicine {
-    private String name, manufacturer, price, description;
-    private String image;
+    private int id;
+    private String name, manufacturer, price, description, image;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
