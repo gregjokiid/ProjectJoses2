@@ -2,7 +2,7 @@ package com.example.uas.model;
 
 public class Medicine {
     private String name, manufacturer, price, description;
-    private int image;
+    private String image;
 
     public String getName() {
         return name;
@@ -28,11 +28,11 @@ public class Medicine {
         this.price = price;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
