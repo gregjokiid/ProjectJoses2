@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
-    private List<Medicine> movieList;
+    private List<Medicine> medicineList;
     private RecyclerView.Adapter adapter;
 
 
@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         mList = findViewById(R.id.rv_medicine);
 
-        movieList = new ArrayList<>();
-        adapter = new MedicineAdapter((ArrayList<Medicine>) movieList);
+        medicineList = new ArrayList<>();
+        adapter = new MedicineAdapter((ArrayList<Medicine>) medicineList);
 
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -77,13 +77,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONArray jsonArray = response.getJSONArray("medicines");
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject employee = jsonArray.getJSONObject(i);
+                        JSONObject medicineObj = jsonArray.getJSONObject(i);
 
-                        Medicine movie = new Medicine();
-                        movie.setName(employee.getString("name"));
-                        movie.setPrice(employee.getString("price"));
-                        movie.setDescription(employee.getString("description"));
-                        movieList.add(movie);
+                        Medicine medicine = new Medicine();
+                        medicine.setName(medicineObj.getString("name"));
+                        medicine.setManufacturer(medicineObj.getString("manufacturer"));
+                        medicine.setPrice(medicineObj.getString("price"));
+                        medicine.setDescription(medicineObj.getString("description"));
+                        medicineList.add(medicine);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
