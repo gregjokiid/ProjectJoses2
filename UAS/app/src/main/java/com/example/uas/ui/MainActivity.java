@@ -30,7 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MedicineAdapter.OnItemClickCallBack {
     private String url = "https://mocki.io/v1/ae13b04b-13df-4023-88a5-7346d5d3c7eb";
     private RecyclerView mList;
     private LinearLayoutManager linearLayoutManager;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mList = findViewById(R.id.rv_medicine);
 
         medicineList = new ArrayList<>();
-        adapter = new MedicineAdapter((ArrayList<Medicine>) medicineList);
+        adapter = new MedicineAdapter((ArrayList<Medicine>) medicineList, this);
 
         linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -135,5 +135,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public void onItemClicked(Medicine data) {
+        ShowMedicine(data);
     }
 }

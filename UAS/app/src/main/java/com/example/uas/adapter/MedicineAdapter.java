@@ -20,30 +20,31 @@ import com.example.uas.model.Medicine;
 
 import java.util.ArrayList;
 
-public class MedicineAdapter extends RecyclerView.Adapter<com.example.uas.adapter.MedicineAdapter.ListViewHolder> {
-    private com.example.uas.adapter.MedicineAdapter.OnItemClickCallBack onItemClickCallBack;
+public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ListViewHolder> {
+    private OnItemClickCallBack onItemClickCallBack;
 
-    public void setOnItemClickCallBack(com.example.uas.adapter.MedicineAdapter.OnItemClickCallBack onItemClickCallBack){
+    public void setOnItemClickCallBack(OnItemClickCallBack onItemClickCallBack) {
         this.onItemClickCallBack = onItemClickCallBack;
     }
 
     private final ArrayList<Medicine> medicineList;
 
-    public MedicineAdapter(ArrayList<Medicine> list){
+    public MedicineAdapter(ArrayList<Medicine> list, OnItemClickCallBack onItemClickCallBack){
         this.medicineList = list;
+        this.onItemClickCallBack = onItemClickCallBack;
     }
 
     @NonNull
     @Override
-    public com.example.uas.adapter.MedicineAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public MedicineAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_row_medicine, viewGroup, false);
-        return new com.example.uas.adapter.MedicineAdapter.ListViewHolder(view);
+        return new MedicineAdapter.ListViewHolder(view);
     }
 
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull final com.example.uas.adapter.MedicineAdapter.ListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ListViewHolder holder, int position) {
         Medicine medicine = medicineList.get(position);
         Glide.with(holder.itemView.getContext())
                 .load((medicine.getImage()))
@@ -53,7 +54,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<com.example.uas.adapte
         holder.tvDescription.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
         holder.tvDescription.setText(medicine.getDescription());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onItemClickCallBack.onItemClicked(medicineList.get(holder.getAdapterPosition()));
