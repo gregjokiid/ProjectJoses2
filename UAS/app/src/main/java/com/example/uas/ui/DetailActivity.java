@@ -25,6 +25,10 @@ import com.example.uas.DBHelper;
 import com.example.uas.R;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class DetailActivity extends AppCompatActivity {
     ImageView tvMedicineImage;
     TextView tvMedicineName, tvMedicineManufacturer, tvMedicinePrice, tvMedicineDescription;
@@ -86,6 +90,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String quantityString = edtQuantity.getText().toString();
                 ContentValues values = new ContentValues();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", new Locale("in", "ID"));
                 int quantity = quantityString.equals("") ? 0 : Integer.parseInt(quantityString);
                 if(quantity < 1) {
                     layoutQuantity.setError("Isi terlebih dahulu");
@@ -106,7 +111,7 @@ public class DetailActivity extends AppCompatActivity {
 
                     values.put(DBHelper.row_transaction_medicineID, 1);
                     values.put(DBHelper.row_transaction_userID, 1);
-                    values.put(DBHelper.row_transaction_date, "berhasil");
+                    values.put(DBHelper.row_transaction_date, sdf.format(new Date()));
                     values.put(DBHelper.row_transaction_quantity, quantity);
                     dbHelper.insertTransaction(values);
 
