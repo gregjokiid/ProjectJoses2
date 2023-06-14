@@ -38,7 +38,7 @@ public class DetailActivity extends AppCompatActivity {
         tvMedicineImage = findViewById(R.id.tv_medicineImage);
         tvMedicineDescription = findViewById(R.id.tv_medicineDescription);
 
-        int medicineImage = getIntent().getIntExtra("medicine_image", 0);
+        String medicineImage = getIntent().getStringExtra("medicine_image");
         String medicineName = getIntent().getStringExtra("medicine_name");
         String medicineManufacturer = getIntent().getStringExtra("medicine_manufacturer");
         String medicinePrice = getIntent().getStringExtra("medicine_price");
