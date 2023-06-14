@@ -4,18 +4,27 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.uas.R;
 import com.example.uas.adapter.MedicineAdapter;
 import com.example.uas.model.Medicine;
@@ -23,10 +32,24 @@ import com.example.uas.model.MedicineData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView rvMedicine;
+    private String url = "https://mocki.io/v1/ae13b04b-13df-4023-88a5-7346d5d3c7eb";
+    private RecyclerView mList;
+
+
+    private LinearLayoutManager linearLayoutManager;
+    private DividerItemDecoration dividerItemDecoration;
+    private List<Medicine> movieList;
+    private RecyclerView.Adapter adapter;
+
+
     private ArrayList<Medicine> list = new ArrayList<>();
 
     @Override
@@ -34,24 +57,58 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rvMedicine = findViewById(R.id.rv_medicine);
-        rvMedicine.setHasFixedSize(true);
+        mList = findViewById(R.id.rv_medicine);
 
-        list.addAll(MedicineData.getListData());
-        showRecyclerList();
+        movieList = new ArrayList<>();
+        adapter = new MedicineAdapter((ArrayList<Medicine>) movieList);
+
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        dividerItemDecoration = new DividerItemDecoration(mList.getContext(), linearLayoutManager.getOrientation());
+
+        mList.setHasFixedSize(true);
+        mList.setLayoutManager(linearLayoutManager);
+        mList.addItemDecoration(dividerItemDecoration);
+        mList.setAdapter(adapter);
+
+        getData();
     }
 
-    private void showRecyclerList() {
-        rvMedicine.setLayoutManager(new LinearLayoutManager(this));
-        MedicineAdapter medicineAdapter = new MedicineAdapter(list);
-        rvMedicine.setAdapter(medicineAdapter);
+    private void getData() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
 
-        medicineAdapter.setOnItemClickCallBack(new MedicineAdapter.OnItemClickCallBack() {
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onItemClicked(Medicine data) {
-                ShowMedicine(data);
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray jsonArray = response.getJSONArray("medicines");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject employee = jsonArray.getJSONObject(i);
+
+                        Medicine movie = new Medicine();
+                        movie.setName(employee.getString("name"));
+                        movie.setPrice(employee.getString("price"));
+                        movie.setDescription(employee.getString("description"));
+                        movieList.add(movie);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    progressDialog.dismiss();
+                }
+                adapter.notifyDataSetChanged();
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Volley", error.toString());
+                progressDialog.dismiss();
             }
         });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
     }
 
     private void ShowMedicine(Medicine medicine) {
