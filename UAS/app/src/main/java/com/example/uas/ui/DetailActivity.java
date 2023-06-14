@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Layout;
@@ -21,6 +20,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.uas.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class DetailActivity extends AppCompatActivity {
     ImageView tvMedicineImage;
@@ -72,8 +72,19 @@ public class DetailActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_beli_obat, null);
         builder.setView(view);
+        TextInputLayout layoutQuantity = view.findViewById(R.id.layout_quantity);
         EditText edtQuantity = view.findViewById(R.id.edt_quantity);
         Button btnBeliDialog = view.findViewById(R.id.btn_beliDialog);
+        btnBeliDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String quantityString = edtQuantity.getText().toString();
+                int quantity = quantityString.equals("") ? 0 : Integer.parseInt(quantityString);
+                if(quantity < 1) {
+                    layoutQuantity.setError("Isi terlebih dahulu");
+                }
+            }
+        });
         builder.show();
     }
 
