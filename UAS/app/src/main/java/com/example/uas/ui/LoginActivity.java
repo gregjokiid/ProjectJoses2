@@ -61,7 +61,9 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(LoginActivity.this, SendOTPActivity.class));
                 }else if(res == "true"){
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    Intent directintent = new Intent(LoginActivity.this, MainActivity.class);
+                    directintent.putExtra("user_email", email);
+                    startActivity(directintent);
                 }else {
                     Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 }

@@ -33,6 +33,7 @@ public class DetailActivity extends AppCompatActivity {
     ImageView tvMedicineImage;
     TextView tvMedicineName, tvMedicineManufacturer, tvMedicinePrice, tvMedicineDescription;
     DBHelper dbHelper;
+    String userEmail;
 
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -54,6 +55,7 @@ public class DetailActivity extends AppCompatActivity {
         tvMedicineImage = findViewById(R.id.tv_medicineImage);
         tvMedicineDescription = findViewById(R.id.tv_medicineDescription);
 
+        userEmail = getIntent().getStringExtra("user_email");
         String medicineImage = getIntent().getStringExtra("medicine_image");
         String medicineName = getIntent().getStringExtra("medicine_name");
         String medicineManufacturer = getIntent().getStringExtra("medicine_manufacturer");
@@ -90,6 +92,7 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String quantityString = edtQuantity.getText().toString();
                 ContentValues values = new ContentValues();
+                int userId = dbHelper.getUserIdByEmail(userEmail);
                 SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", new Locale("in", "ID"));
                 int quantity = quantityString.equals("") ? 0 : Integer.parseInt(quantityString);
                 if(quantity < 1) {
@@ -110,7 +113,7 @@ public class DetailActivity extends AppCompatActivity {
 //                    dbHelper.insertMedicine(values);
 
                     values.put(DBHelper.row_transaction_medicineID, 1);
-                    values.put(DBHelper.row_transaction_userID, 1);
+                    values.put(DBHelper.row_transaction_userID, userId);
                     values.put(DBHelper.row_transaction_date, sdf.format(new Date()));
                     values.put(DBHelper.row_transaction_quantity, quantity);
                     dbHelper.insertTransaction(values);

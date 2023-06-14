@@ -37,11 +37,14 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
     private DividerItemDecoration dividerItemDecoration;
     private List<Medicine> medicineList;
     private RecyclerView.Adapter adapter;
+    String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        userEmail = getIntent().getStringExtra("user_email");
 
         mList = findViewById(R.id.rv_medicine);
 
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
     private void ShowMedicine(Medicine medicine) {
         Intent directintent = new Intent(MainActivity.this, DetailActivity.class);
         Toast.makeText(this, medicine.getName(), Toast.LENGTH_SHORT).show();
+        directintent.putExtra("user_email", userEmail);
         directintent.putExtra("medicine_image", medicine.getImage());
         directintent.putExtra("medicine_name", medicine.getName());
         directintent.putExtra("medicine_manufacturer", medicine.getManufacturer());

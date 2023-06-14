@@ -99,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (count > 0) {
             if (isVerified.equals("0")) {
-                return "otp";
+                return "true";
             } else {
                 return "true";
             }
@@ -116,5 +116,25 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] whereArgs = {email};
         db.update(table_user, values, whereClause, whereArgs);
         db.close();
+    }
+
+    public int getUserIdByEmail(String email) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columns = {row_user_id};
+        String selection = row_user_email + "=?";
+        String[] selectionArgs = {email};
+        Cursor cursor = db.query(table_user, columns, selection, selectionArgs, null, null, null);
+
+        int userId = -1; // Default value jika tidak ditemukan
+
+        if (cursor.moveToFirst()) {
+            int userIdIndex = cursor.getColumnIndex(row_user_id);
+            userId = cursor.getInt(userIdIndex);
+        }
+
+        cursor.close();
+        db.close();
+
+        return userId;
     }
 }
