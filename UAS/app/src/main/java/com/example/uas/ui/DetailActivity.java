@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Layout;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.uas.DBHelper;
@@ -83,9 +85,20 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String quantityString = edtQuantity.getText().toString();
+                ContentValues values = new ContentValues();
                 int quantity = quantityString.equals("") ? 0 : Integer.parseInt(quantityString);
                 if(quantity < 1) {
                     layoutQuantity.setError("Isi terlebih dahulu");
+                } else {
+                    values.put(DBHelper.row_user_name, "berhasil");
+                    values.put(DBHelper.row_user_email, "berhasil@gmail.com");
+                    values.put(DBHelper.row_user_password, "berhasil");
+                    values.put(DBHelper.row_user_phone, "1234");
+                    values.put(DBHelper.row_user_isVerified, "0");
+                    dbHelper.insertUser(values);
+
+                    Toast.makeText(DetailActivity.this, "Register successful", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
