@@ -19,12 +19,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.uas.DBHelper;
 import com.example.uas.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class DetailActivity extends AppCompatActivity {
     ImageView tvMedicineImage;
     TextView tvMedicineName, tvMedicineManufacturer, tvMedicinePrice, tvMedicineDescription;
+    DBHelper dbHelper;
 
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -32,6 +34,8 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        dbHelper = new DBHelper(this);
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
