@@ -33,16 +33,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private String url = "https://mocki.io/v1/ae13b04b-13df-4023-88a5-7346d5d3c7eb";
     private RecyclerView mList;
-
-
     private LinearLayoutManager linearLayoutManager;
     private DividerItemDecoration dividerItemDecoration;
     private List<Medicine> medicineList;
     private RecyclerView.Adapter adapter;
-
-
-    private ArrayList<Medicine> list = new ArrayList<>();
-
     private static final int[] image = {
             R.drawable.ic_launcher_background,
             R.drawable.ic_launcher_background,
