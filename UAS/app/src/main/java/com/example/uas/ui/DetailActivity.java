@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -71,6 +72,7 @@ public class DetailActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_beli_obat, null);
         builder.setView(view);
+        EditText edtQuantity = view.findViewById(R.id.edt_quantity);
         Button btnBeliDialog = view.findViewById(R.id.btn_beliDialog);
         builder.show();
     }
