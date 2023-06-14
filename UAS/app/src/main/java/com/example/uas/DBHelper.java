@@ -28,16 +28,16 @@ public class DBHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
     public DBHelper(Context context) {
-        super(context, database_name, null, 3);
+        super(context, database_name, null, 1);
         db = getWritableDatabase();
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + table_user + "(" + row_user_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+        String queryUsers = "CREATE TABLE " + table_user + "(" + row_user_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + row_user_name + " TEXT," + row_user_email + " TEXT," + row_user_password + " TEXT,"
                 + row_user_phone + " TEXT," + row_user_isVerified + " TEXT)";
-        db.execSQL(query);
+        db.execSQL(queryUsers);
 
         String queryMedicines = "CREATE TABLE " + table_medicines + "(" + row_medicine_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + row_medicine_name + " TEXT," + row_medicine_manufacturer + " TEXT," + row_medicine_price + " TEXT,"
@@ -52,7 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertData(ContentValues values){
+    public void insertUser(ContentValues values){
         db.insert(table_user, null, values);
     }
 

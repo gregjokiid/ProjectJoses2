@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                     values.put(DBHelper.row_user_password, password);
                     values.put(DBHelper.row_user_phone, phone);
                     values.put(DBHelper.row_user_isVerified, "0");
-                    dbHelper.insertData(values);
+                    dbHelper.insertUser(values);
 
                     Toast.makeText(RegisterActivity.this, "Register successful", Toast.LENGTH_SHORT).show();
                     finish();
