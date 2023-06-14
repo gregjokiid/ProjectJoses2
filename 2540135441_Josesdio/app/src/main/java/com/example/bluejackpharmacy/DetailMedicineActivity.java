@@ -90,7 +90,6 @@ public class DetailMedicineActivity extends AppCompatActivity {
                         });
                     }
                 });
-
                 dialog.show();
             }
         });
