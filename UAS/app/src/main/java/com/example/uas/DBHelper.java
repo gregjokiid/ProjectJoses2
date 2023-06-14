@@ -17,6 +17,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String row_user_phone = "Phone";
     public static final String row_user_isVerified = "IsVerified";
 
+    public static final String table_medicines = "medicines";
+    public static final String row_medicine_id = "_id";
+    public static final String row_medicine_name = "Name";
+    public static final String row_medicine_manufacturer = "Manufacturer";
+    public static final String row_medicine_price = "Price";
+    public static final String row_medicine_image = "Image";
+    public static final String row_medicine_description = "Description";
+
     private SQLiteDatabase db;
 
     public DBHelper(Context context) {
@@ -27,19 +35,31 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + table_user + "(" + row_user_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + row_user_name + " TEXT," + row_user_email + " TEXT," + row_user_password + " TEXT," + row_user_phone + " TEXT," + row_user_isVerified + " TEXT)";
+                + row_user_name + " TEXT," + row_user_email + " TEXT," + row_user_password + " TEXT,"
+                + row_user_phone + " TEXT," + row_user_isVerified + " TEXT)";
         db.execSQL(query);
+
+        String queryMedicines = "CREATE TABLE " + table_medicines + "(" + row_medicine_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + row_medicine_name + " TEXT," + row_medicine_manufacturer + " TEXT," + row_medicine_price + " TEXT,"
+                + row_medicine_image + " TEXT," + row_medicine_description + " TEXT)";
+        db.execSQL(queryMedicines);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + table_user);
+        db.execSQL("DROP TABLE IF EXISTS " + table_medicines);
+        onCreate(db);
     }
 
     public void insertData(ContentValues values){
         db.insert(table_user, null, values);
     }
 
+    // Method untuk menyisipkan data obat
+    public void insertMedicine(ContentValues values) {
+        db.insert(table_medicines, null, values);
+    }
 
     public String checkUser(String email, String password){
         String[] columns = {row_user_id, row_user_isVerified};
