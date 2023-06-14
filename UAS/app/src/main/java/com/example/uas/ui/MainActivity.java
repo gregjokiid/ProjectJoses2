@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Medicine> list = new ArrayList<>();
 
+    private static final int[] image = {
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background,
+            R.drawable.ic_launcher_background
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                         medicine.setName(medicineObj.getString("name"));
                         medicine.setManufacturer(medicineObj.getString("manufacturer"));
                         medicine.setPrice(medicineObj.getString("price"));
+                        medicine.setImage(image[i]);
                         medicine.setDescription(medicineObj.getString("description"));
                         medicineList.add(medicine);
                     }
