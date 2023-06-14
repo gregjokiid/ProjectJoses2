@@ -70,6 +70,7 @@ public class DetailActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_beli_obat, null);
+        builder.setView(view);
         AlertDialog dialog = builder.create();
 
         dialog.setOnShowListener(new DialogInterface.OnShowListener() {
