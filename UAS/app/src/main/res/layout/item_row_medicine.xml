@@ -29,6 +29,7 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold"
+            android:singleLine="true"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/img_item_photo"
             app:layout_constraintEnd_toEndOf="parent"/>
