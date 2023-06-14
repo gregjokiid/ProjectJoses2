@@ -90,12 +90,25 @@ public class DetailActivity extends AppCompatActivity {
                 if(quantity < 1) {
                     layoutQuantity.setError("Isi terlebih dahulu");
                 } else {
-                    values.put(DBHelper.row_user_name, "berhasil");
-                    values.put(DBHelper.row_user_email, "berhasil@gmail.com");
-                    values.put(DBHelper.row_user_password, "berhasil");
-                    values.put(DBHelper.row_user_phone, "1234");
-                    values.put(DBHelper.row_user_isVerified, "0");
-                    dbHelper.insertUser(values);
+//                    values.put(DBHelper.row_user_name, "2");
+//                    values.put(DBHelper.row_user_email, "3");
+//                    values.put(DBHelper.row_user_password, "berhasil");
+//                    values.put(DBHelper.row_user_phone, "1234");
+//                    values.put(DBHelper.row_user_isVerified, "0");
+//                    dbHelper.insertUser(values);
+
+//                    values.put(DBHelper.row_medicine_name, "Obat");
+//                    values.put(DBHelper.row_medicine_manufacturer, "Wiker");
+//                    values.put(DBHelper.row_medicine_price, "1234");
+//                    values.put(DBHelper.row_medicine_image, "https://fvalentinus.web.app/");
+//                    values.put(DBHelper.row_medicine_description, "hehehe");
+//                    dbHelper.insertMedicine(values);
+
+                    values.put(DBHelper.row_transaction_medicineID, 1);
+                    values.put(DBHelper.row_transaction_userID, 1);
+                    values.put(DBHelper.row_transaction_date, "berhasil");
+                    values.put(DBHelper.row_transaction_quantity, quantity);
+                    dbHelper.insertTransaction(values);
 
                     Toast.makeText(DetailActivity.this, "Register successful", Toast.LENGTH_SHORT).show();
                     finish();
