@@ -25,6 +25,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String row_medicine_image = "Image";
     public static final String row_medicine_description = "Description";
 
+    public static final String table_transactions = "transactions";
+    public static final String row_transaction_id = "_id";
+    public static final String row_transaction_medicineID = "MedicineID";
+    public static final String row_transaction_userID = "UserID";
+    public static final String row_transaction_date = "TransactionDate";
+    public static final String row_transaction_quantity = "Quantity";
+
     private SQLiteDatabase db;
 
     public DBHelper(Context context) {
@@ -43,12 +50,20 @@ public class DBHelper extends SQLiteOpenHelper {
                 + row_medicine_name + " TEXT," + row_medicine_manufacturer + " TEXT," + row_medicine_price + " TEXT,"
                 + row_medicine_image + " TEXT," + row_medicine_description + " TEXT)";
         db.execSQL(queryMedicines);
+
+        String queryTransactions = "CREATE TABLE " + table_transactions + "(" + row_transaction_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + row_transaction_medicineID + " INTEGER," + row_transaction_userID + " INTEGER,"
+                + row_transaction_date + " TEXT," + row_transaction_quantity + " INTEGER,"
+                + "FOREIGN KEY(" + row_transaction_medicineID + ") REFERENCES " + table_medicines + "(" + row_medicine_id + "),"
+                + "FOREIGN KEY(" + row_transaction_userID + ") REFERENCES " + table_user + "(" + row_user_id + "))";
+        db.execSQL(queryTransactions);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + table_user);
         db.execSQL("DROP TABLE IF EXISTS " + table_medicines);
+        db.execSQL("DROP TABLE IF EXISTS " + table_transactions);
         onCreate(db);
     }
 
@@ -56,9 +71,12 @@ public class DBHelper extends SQLiteOpenHelper {
         db.insert(table_user, null, values);
     }
 
-    // Method untuk menyisipkan data obat
     public void insertMedicine(ContentValues values) {
         db.insert(table_medicines, null, values);
+    }
+
+    public void insertTransaction(ContentValues values) {
+        db.insert(table_transactions, null, values);
     }
 
     public String checkUser(String email, String password){
