@@ -3,11 +3,9 @@ package com.example.uas.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.Date;
-
 public class Transaction implements Parcelable {
-    private int id, medicineID, userID, quantity;
-    private Date transactionDate;
+    private int id, userId, quantity;
+    private String medicineId, transactionDate;
 
     public int getId() {
         return id;
@@ -17,33 +15,36 @@ public class Transaction implements Parcelable {
         this.id = id;
     }
 
-    public int getMedicineID() {
-        return medicineID;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setMedicineID(int medicineID) {
-        this.medicineID = medicineID;
-    }
-    public int getUserID() {
-        return userID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-    public Date getTransactionDate() {
-        return transactionDate;
-    }
-
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
-    }
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getMedicineId() {
+        return medicineId;
+    }
+
+    public void setMedicineId(String medicineId) {
+        this.medicineId = medicineId;
+    }
+
+    public String getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(String transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
     @Override
@@ -54,27 +55,29 @@ public class Transaction implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.id);
-        dest.writeInt(this.medicineID);
-        dest.writeInt(this.userID);
+        dest.writeInt(this.userId);
         dest.writeInt(this.quantity);
+        dest.writeString(this.medicineId);
+        dest.writeString(this.transactionDate);
     }
 
     public Transaction() {
     }
 
-    public Transaction(int id, int medicineID, int userID, Date transactionDate, int quantity) {
+    public Transaction(int id, int userId, int quantity, String medicineId, String transactionDate) {
         this.id = id;
-        this.medicineID = medicineID;
-        this.userID = userID;
-        this.transactionDate = transactionDate;
+        this.userId = userId;
         this.quantity = quantity;
+        this.medicineId = medicineId;
+        this.transactionDate = transactionDate;
     }
 
     private Transaction(Parcel in) {
         this.id = in.readInt();
-        this.medicineID = in.readInt();
-        this.userID = in.readInt();
+        this.userId = in.readInt();
         this.quantity = in.readInt();
+        this.medicineId = in.readString();
+        this.transactionDate = in.readString();
     }
 
     public static final Parcelable.Creator<Transaction> CREATOR = new Parcelable.Creator<Transaction>() {
