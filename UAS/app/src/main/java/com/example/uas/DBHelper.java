@@ -95,7 +95,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
 
         if (count > 0) {
             if (isVerified.equals("0")) {
@@ -115,7 +114,6 @@ public class DBHelper extends SQLiteOpenHelper {
         String whereClause = row_user_email + "=?";
         String[] whereArgs = {email};
         db.update(table_user, values, whereClause, whereArgs);
-        db.close();
     }
 
     public int getUserIdByEmail(String email) {
@@ -133,7 +131,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
 
         return userId;
     }
