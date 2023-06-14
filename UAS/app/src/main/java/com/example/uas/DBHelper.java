@@ -52,9 +52,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(queryMedicines);
 
         String queryTransactions = "CREATE TABLE " + table_transactions + "(" + row_transaction_id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + row_transaction_medicineID + " INTEGER," + row_transaction_userID + " INTEGER,"
+                + row_transaction_medicineID + " TEXT," + row_transaction_userID + " INTEGER,"
                 + row_transaction_date + " TEXT," + row_transaction_quantity + " INTEGER,"
-                + "FOREIGN KEY(" + row_transaction_medicineID + ") REFERENCES " + table_medicines + "(" + row_medicine_id + "),"
+//                + "FOREIGN KEY(" + row_transaction_medicineID + ") REFERENCES " + table_medicines + "(" + row_medicine_id + "),"
                 + "FOREIGN KEY(" + row_transaction_userID + ") REFERENCES " + table_user + "(" + row_user_id + "))";
         db.execSQL(queryTransactions);
     }

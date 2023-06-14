@@ -33,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
     ImageView tvMedicineImage;
     TextView tvMedicineName, tvMedicineManufacturer, tvMedicinePrice, tvMedicineDescription;
     DBHelper dbHelper;
-    String userEmail;
+    String userEmail, medicineName;
 
     @SuppressLint("WrongConstant")
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -57,7 +57,7 @@ public class DetailActivity extends AppCompatActivity {
 
         userEmail = getIntent().getStringExtra("user_email");
         String medicineImage = getIntent().getStringExtra("medicine_image");
-        String medicineName = getIntent().getStringExtra("medicine_name");
+        medicineName = getIntent().getStringExtra("medicine_name");
         String medicineManufacturer = getIntent().getStringExtra("medicine_manufacturer");
         String medicinePrice = getIntent().getStringExtra("medicine_price");
         String medicineDescription = getIntent().getStringExtra("medicine_description");
@@ -98,21 +98,7 @@ public class DetailActivity extends AppCompatActivity {
                 if(quantity < 1) {
                     layoutQuantity.setError("Isi terlebih dahulu");
                 } else {
-//                    values.put(DBHelper.row_user_name, "2");
-//                    values.put(DBHelper.row_user_email, "3");
-//                    values.put(DBHelper.row_user_password, "berhasil");
-//                    values.put(DBHelper.row_user_phone, "1234");
-//                    values.put(DBHelper.row_user_isVerified, "0");
-//                    dbHelper.insertUser(values);
-
-//                    values.put(DBHelper.row_medicine_name, "Obat");
-//                    values.put(DBHelper.row_medicine_manufacturer, "Wiker");
-//                    values.put(DBHelper.row_medicine_price, "1234");
-//                    values.put(DBHelper.row_medicine_image, "https://fvalentinus.web.app/");
-//                    values.put(DBHelper.row_medicine_description, "hehehe");
-//                    dbHelper.insertMedicine(values);
-
-                    values.put(DBHelper.row_transaction_medicineID, 1);
+                    values.put(DBHelper.row_transaction_medicineID, medicineName);
                     values.put(DBHelper.row_transaction_userID, userId);
                     values.put(DBHelper.row_transaction_date, sdf.format(new Date()));
                     values.put(DBHelper.row_transaction_quantity, quantity);
