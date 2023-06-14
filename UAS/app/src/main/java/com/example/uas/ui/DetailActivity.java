@@ -115,7 +115,7 @@ public class DetailActivity extends AppCompatActivity {
                     values.put(DBHelper.row_transaction_quantity, quantity);
                     dbHelper.insertTransaction(values);
 
-                    Toast.makeText(DetailActivity.this, "Register successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailActivity.this, "Berhasil membeli obat", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
