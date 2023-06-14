@@ -71,15 +71,8 @@ public class DetailActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_beli_obat, null);
         builder.setView(view);
-        AlertDialog dialog = builder.create();
-
-        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-            @Override
-            public void onShow(DialogInterface dialogInterface) {
-
-            }
-        });
-        dialog.show();
+        Button btnBeliDialog = view.findViewById(R.id.btn_beliDialog);
+        builder.show();
     }
 
     @Override
