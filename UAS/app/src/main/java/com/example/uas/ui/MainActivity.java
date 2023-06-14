@@ -37,14 +37,6 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
     private DividerItemDecoration dividerItemDecoration;
     private List<Medicine> medicineList;
     private RecyclerView.Adapter adapter;
-    private static final int[] image = {
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_background
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
                         medicine.setName(medicineObj.getString("name"));
                         medicine.setManufacturer(medicineObj.getString("manufacturer"));
                         medicine.setPrice(medicineObj.getString("price"));
-                        medicine.setImage(image[i]);
+                        medicine.setImage(medicineObj.getString("image"));
                         medicine.setDescription(medicineObj.getString("description"));
                         medicineList.add(medicine);
                     }
