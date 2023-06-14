@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.uas.DBHelper;
 import com.example.uas.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -62,7 +63,7 @@ public class DetailActivity extends AppCompatActivity {
         String medicinePrice = getIntent().getStringExtra("medicine_price");
         String medicineDescription = getIntent().getStringExtra("medicine_description");
 
-        Glide.with(this).asBitmap().load(medicineImage).into(tvMedicineImage);
+        Glide.with(this).asBitmap().load(medicineImage).apply(new RequestOptions().override(1024, 1024)).into(tvMedicineImage);
 
         tvMedicineName.setText(medicineName);
         tvMedicineManufacturer.setText(medicineManufacturer);
