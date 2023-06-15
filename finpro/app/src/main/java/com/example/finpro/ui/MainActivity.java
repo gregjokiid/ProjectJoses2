@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.finpro.DBHelper;
 import com.example.finpro.R;
 import com.example.finpro.adapter.MedicineAdapter;
 import com.example.finpro.model.Medicine;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
     private DividerItemDecoration dividerItemDecoration;
     private List<Medicine> medicineList;
     private RecyclerView.Adapter adapter;
+    DBHelper dbHelper;
     String userEmail;
 
     @Override
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
         setContentView(R.layout.activity_main);
 
         userEmail = getIntent().getStringExtra("user_email");
+
+        dbHelper = new DBHelper(this);
 
         mList = findViewById(R.id.rv_medicine);
 
@@ -61,6 +67,19 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
         mList.setAdapter(adapter);
 
         getData();
+    }
+
+    private void insertMedicineData(String name, String manufacturer, String price, String image, String description) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DBHelper.row_medicine_name, name);
+        values.put(DBHelper.row_medicine_manufacturer, manufacturer);
+        values.put(DBHelper.row_medicine_price, price);
+        values.put(DBHelper.row_medicine_image, image);
+        values.put(DBHelper.row_medicine_description, description);
+
+        db.insert(DBHelper.table_medicines, null, values);
     }
 
     private void getData() {
@@ -83,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
                         medicine.setImage(medicineObj.getString("image"));
                         medicine.setDescription(medicineObj.getString("description"));
                         medicineList.add(medicine);
+                        insertMedicineData(medicine.getName(), medicine.getManufacturer(), medicine.getPrice(), medicine.getImage(), medicine.getDescription());
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
