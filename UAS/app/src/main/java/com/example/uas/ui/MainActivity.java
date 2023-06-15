@@ -128,6 +128,9 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
         } else if (item.getItemId() == R.id.menu2) {
             startActivity(new Intent(this, MenuActivity.class));
             return true;
+        } else if (item.getItemId() == R.id.menu3) {
+            startActivity(new Intent(this, TransactionActivity.class));
+            return true;
         } else {
             return true;
         }

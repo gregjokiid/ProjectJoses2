@@ -47,12 +47,12 @@ public class TransactionActivity extends AppCompatActivity {
         newsAdapter.setOnItemClickCallBack(new TransactionAdapter.OnItemClickCallBack() {
             @Override
             public void onItemClicked(Transaction data) {
-                ShowNews(data);
+//                ShowNews(data);
             }
         });
     }
 
-    private void ShowNews(Transaction news) {
+//    private void ShowNews(Transaction news) {
 //        Intent directintent = new Intent(TransactionActivity.this, DetailActivity.class);
 //        Toast.makeText(this, news.getNewsTitle(), Toast.LENGTH_SHORT).show();
 //        directintent.putExtra("news_image", news.getNewsImage());
@@ -60,5 +60,5 @@ public class TransactionActivity extends AppCompatActivity {
 //        directintent.putExtra("news_author", news.getNewsAuthor());
 //        directintent.putExtra("news_detail", news.getNewsDetail());
 //        startActivity(directintent);
-    }
+//    }
 }
