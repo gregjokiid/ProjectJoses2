@@ -167,4 +167,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return transactions;
     }
+
+    public void deleteTransactionById(int transactionId) {
+        SQLiteDatabase db = getWritableDatabase();
+        String whereClause = row_transaction_id + "=?";
+        String[] whereArgs = {String.valueOf(transactionId)};
+        db.delete(table_transactions, whereClause, whereArgs);
+    }
 }

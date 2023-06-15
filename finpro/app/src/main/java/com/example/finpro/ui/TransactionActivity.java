@@ -77,7 +77,8 @@ public class TransactionActivity extends AppCompatActivity {
                         .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //
+                                dbHelper.deleteTransactionById(data.getId());
+                                startActivity(new Intent(TransactionActivity.this, MainActivity.class));
                             }
                         })
                         .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
