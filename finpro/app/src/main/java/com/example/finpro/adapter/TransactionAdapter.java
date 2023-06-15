@@ -17,6 +17,12 @@ import com.example.finpro.model.Transaction;
 import java.util.ArrayList;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ListViewHolder> {
+    private TransactionAdapter.OnItemClickCallBack onItemClickCallBack;
+
+    public void setOnItemClickCallBack(TransactionAdapter.OnItemClickCallBack onItemClickCallBack){
+        this.onItemClickCallBack = onItemClickCallBack;
+    }
+
     private final ArrayList<Transaction> transactionList;
 
     public TransactionAdapter(ArrayList<Transaction> list){
@@ -38,6 +44,13 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.tvMedicineId.setText(transaction.getMedicineId());
         holder.tvTransactionDate.setText(transaction.getTransactionDate());
         holder.tvQuantity.setText(String.valueOf(transaction.getQuantity()));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onItemClickCallBack.onItemClicked(transactionList.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -54,5 +67,9 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             tvTransactionDate = itemView.findViewById(R.id.tv_item_transaction_date);
             tvQuantity = itemView.findViewById(R.id.tv_item_quantity);
         }
+    }
+
+    public interface OnItemClickCallBack {
+        void onItemClicked(Transaction data);
     }
 }
