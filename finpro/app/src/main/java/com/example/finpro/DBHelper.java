@@ -168,6 +168,15 @@ public class DBHelper extends SQLiteOpenHelper {
         return transactions;
     }
 
+    public void updateTransactionQuantityById(int transactionId, int newQuantity) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(row_transaction_quantity, newQuantity);
+        String whereClause = row_transaction_id + "=?";
+        String[] whereArgs = {String.valueOf(transactionId)};
+        db.update(table_transactions, values, whereClause, whereArgs);
+    }
+
     public void deleteTransactionById(int transactionId) {
         SQLiteDatabase db = getWritableDatabase();
         String whereClause = row_transaction_id + "=?";
