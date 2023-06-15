@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
     private RecyclerView.Adapter adapter;
     DBHelper dbHelper;
     String userEmail;
+    int dataCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,23 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
         db.insert(DBHelper.table_medicines, null, values);
     }
 
+    private int getMedicineDataCount() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String query = "SELECT COUNT(*) FROM " + DBHelper.table_medicines;
+        Cursor cursor = db.rawQuery(query, null);
+
+        int count = 0;
+
+        if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+        }
+
+        cursor.close();
+
+        return count;
+    }
+
     private void getData() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
@@ -94,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
                     JSONArray jsonArray = response.getJSONArray("medicines");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject medicineObj = jsonArray.getJSONObject(i);
-
+                        int dataCount = getMedicineDataCount();
                         Medicine medicine = new Medicine();
                         medicine.setName(medicineObj.getString("name"));
                         medicine.setManufacturer(medicineObj.getString("manufacturer"));
@@ -102,7 +121,9 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
                         medicine.setImage(medicineObj.getString("image"));
                         medicine.setDescription(medicineObj.getString("description"));
                         medicineList.add(medicine);
-                        insertMedicineData(medicine.getName(), medicine.getManufacturer(), medicine.getPrice(), medicine.getImage(), medicine.getDescription());
+                        if (dataCount < 6 ){
+                            insertMedicineData(medicine.getName(), medicine.getManufacturer(), medicine.getPrice(), medicine.getImage(), medicine.getDescription());
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
