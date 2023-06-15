@@ -7,6 +7,43 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:446454805160:android:a9f2c241a23b723f1ec89d",
+        "android_client_info": {
+          "package_name": "com.example.finpro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446454805160-fs0kr0mhde0u8gunnr01li4ac629e2lg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finpro",
+            "certificate_hash": "7524931590c86369a2159d1216935a086de9a82d"
+          }
+        },
+        {
+          "client_id": "446454805160-u3chobp9kg4qm8em4k5dieui9qhllhcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlKv7R45wdLHVDCdkhNeX5H6fnBbzvvvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446454805160-u3chobp9kg4qm8em4k5dieui9qhllhcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:446454805160:android:5e41179e63cdad331ec89d",
         "android_client_info": {
           "package_name": "com.example.uas"
