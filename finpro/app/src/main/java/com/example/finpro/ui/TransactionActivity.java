@@ -78,7 +78,8 @@ public class TransactionActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dbHelper.deleteTransactionById(data.getId());
-                                startActivity(new Intent(TransactionActivity.this, MainActivity.class));
+                                Toast.makeText(TransactionActivity.this, "Berhasil menghapus pembelian obat", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         })
                         .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
