@@ -143,17 +143,19 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<Transaction> transactions = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        String[] columns = {row_transaction_medicineID, row_transaction_date, row_transaction_quantity};
+        String[] columns = {row_transaction_id, row_transaction_medicineID, row_transaction_date, row_transaction_quantity};
         String selection = row_transaction_userID + " = (SELECT " + row_user_id + " FROM " + table_user + " WHERE " + row_user_email + "=?)";
         String[] selectionArgs = {email};
         Cursor cursor = db.query(table_transactions, columns, selection, selectionArgs, null, null, null);
 
         while (cursor.moveToNext()) {
             Transaction transaction = new Transaction();
+            int idIndex = cursor.getColumnIndex(row_transaction_id);
             int medicineIdIndex = cursor.getColumnIndex(row_transaction_medicineID);
             int dateIndex = cursor.getColumnIndex(row_transaction_date);
             int quantityIndex = cursor.getColumnIndex(row_transaction_quantity);
 
+            transaction.setId(cursor.getInt(idIndex));
             transaction.setMedicineId(cursor.getString(medicineIdIndex));
             transaction.setTransactionDate(cursor.getString(dateIndex));
             transaction.setQuantity(cursor.getInt(quantityIndex));
