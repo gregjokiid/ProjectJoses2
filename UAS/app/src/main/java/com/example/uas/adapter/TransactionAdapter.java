@@ -1,94 +1,79 @@
 package com.example.uas.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
+import android.os.Build;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.uas.R;
 import com.example.uas.model.Transaction;
-import com.joses.uts.R;
-import com.joses.uts.model.Note;
 
 import java.util.ArrayList;
 
-public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.NoteViewHolder> {
-    private final OnItemClickCallback onItemClickCallback;
+public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ListViewHolder> {
+    private TransactionAdapter.OnItemClickCallBack onItemClickCallBack;
 
-    public TransactionAdapter(OnItemClickCallback onItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback;
+    public void setOnItemClickCallBack(TransactionAdapter.OnItemClickCallBack onItemClickCallBack){
+        this.onItemClickCallBack = onItemClickCallBack;
     }
 
-    private final ArrayList<Transaction> listNotes = new ArrayList<>();
+    private final ArrayList<Transaction> newsList;
 
-    public ArrayList<Transaction> getListNotes() {
-        return listNotes;
-    }
-
-    public void setListNotes(ArrayList<Transaction> listNotes) {
-
-        if (listNotes.size() > 0) {
-            this.listNotes.clear();
-        }
-        this.listNotes.addAll(listNotes);
-    }
-
-    public void addItem(Transaction note) {
-        this.listNotes.add(note);
-        notifyItemInserted(listNotes.size() - 1);
-    }
-
-    public void updateItem(int position, Transaction note) {
-        this.listNotes.set(position, note);
-        notifyItemChanged(position, note);
-    }
-
-    public void removeItem(int position) {
-        this.listNotes.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, listNotes.size());
+    public TransactionAdapter(ArrayList<Transaction> list){
+        this.newsList = list;
     }
 
     @NonNull
     @Override
-    public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_row_transaction, parent, false);
-        return new NoteViewHolder(view);
+    public TransactionAdapter.ListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_row_transaction, viewGroup, false);
+        return new TransactionAdapter.ListViewHolder(view);
     }
 
+    @SuppressLint("WrongConstant")
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
-        holder.tvTournament.setText(listNotes.get(position).getTournament());
-        holder.tvDate.setText(listNotes.get(position).getDate());
-        holder.tvDescription.setText(listNotes.get(position).getDescription());
-        holder.tvPlatform.setText(listNotes.get(position).getPlatform());
-        holder.cvNote.setOnClickListener(v -> onItemClickCallback.onItemClicked(listNotes.get(position), position));
+    public void onBindViewHolder(@NonNull final TransactionAdapter.ListViewHolder holder, int position) {
+        Transaction news = newsList.get(position);
+        holder.tvMedicineId.setText(news.getMedicineId());
+        holder.tvTransactionDate.setText(news.getTransactionDate());
+        holder.tvQuantity.setText(news.getQuantity());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onItemClickCallBack.onItemClicked(newsList.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return listNotes.size();
+        return newsList.size();
     }
 
-    static class NoteViewHolder extends RecyclerView.ViewHolder {
-        final TextView tvTournament, tvDescription, tvDate, tvPlatform;
-        final CardView cvNote;
+    public static class ListViewHolder extends RecyclerView.ViewHolder {
+        TextView tvMedicineId, tvTransactionDate, tvQuantity;
 
-        NoteViewHolder(View itemView) {
+        public ListViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTournament = itemView.findViewById(R.id.tv_item_tournament);
-            tvDescription = itemView.findViewById(R.id.tv_item_description);
-            tvDate = itemView.findViewById(R.id.tv_item_date);
-            tvPlatform = itemView.findViewById(R.id.tv_item_platform);
-            cvNote = itemView.findViewById(R.id.cv_item_note);
+            tvMedicineId = itemView.findViewById(R.id.tv_item_medicine_id);
+            tvTransactionDate = itemView.findViewById(R.id.tv_item_transaction_date);
+            tvQuantity = itemView.findViewById(R.id.tv_item_quantity);
         }
     }
 
-    public interface OnItemClickCallback {
-        void onItemClicked(Transaction selectedNote, Integer position);
+    public interface OnItemClickCallBack {
+        void onItemClicked(Transaction data);
     }
 }
