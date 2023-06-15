@@ -18,7 +18,7 @@ public class TransactionActivity extends AppCompatActivity {
     private RecyclerView rvTransaction;
     private ArrayList<Transaction> list = new ArrayList<>();
     DBHelper dbHelper;
-    private String userEmail = "frans@gmail.com"; // Email pengguna tertentu
+    String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +26,8 @@ public class TransactionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transaction);
 
         dbHelper = new DBHelper(this);
+
+        userEmail = getIntent().getStringExtra("user_email");
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
