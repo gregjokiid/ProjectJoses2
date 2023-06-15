@@ -16,7 +16,6 @@ import com.example.uas.DBHelper;
 import com.example.uas.R;
 import com.example.uas.adapter.TransactionAdapter;
 import com.example.uas.model.Transaction;
-import com.example.uas.model.TransactionData;
 
 import java.util.ArrayList;
 
@@ -24,6 +23,7 @@ public class TransactionActivity extends AppCompatActivity {
     private RecyclerView rvTransaction;
     private ArrayList<Transaction> list = new ArrayList<>();
     DBHelper dbHelper;
+    private String userEmail = "frans@gmail.com"; // Email pengguna tertentu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,9 @@ public class TransactionActivity extends AppCompatActivity {
         rvTransaction = findViewById(R.id.rv_transaction);
         rvTransaction.setHasFixedSize(true);
 
-        list.addAll(TransactionData.getListData());
+        // Mengambil data transaksi dari DBHelper berdasarkan email pengguna tertentu
+        list.addAll(dbHelper.getTransactionsByEmail(userEmail));
+
         showRecyclerList();
     }
 

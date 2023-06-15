@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.uas.model.Transaction;
+
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String database_name = "bluejack";
@@ -133,5 +137,32 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
 
         return userId;
+    }
+
+    public ArrayList<Transaction> getTransactionsByEmail(String email) {
+        ArrayList<Transaction> transactions = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        String[] columns = {row_transaction_medicineID, row_transaction_date, row_transaction_quantity};
+        String selection = row_transaction_userID + " = (SELECT " + row_user_id + " FROM " + table_user + " WHERE " + row_user_email + "=?)";
+        String[] selectionArgs = {email};
+        Cursor cursor = db.query(table_transactions, columns, selection, selectionArgs, null, null, null);
+
+        while (cursor.moveToNext()) {
+            Transaction transaction = new Transaction();
+            int medicineIdIndex = cursor.getColumnIndex(row_transaction_medicineID);
+            int dateIndex = cursor.getColumnIndex(row_transaction_date);
+            int quantityIndex = cursor.getColumnIndex(row_transaction_quantity);
+
+            transaction.setMedicineId(cursor.getString(medicineIdIndex));
+            transaction.setTransactionDate(cursor.getString(dateIndex));
+            transaction.setQuantity(cursor.getInt(quantityIndex));
+
+            transactions.add(transaction);
+        }
+
+        cursor.close();
+
+        return transactions;
     }
 }
