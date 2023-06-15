@@ -2,7 +2,6 @@ package com.example.uas.adapter;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
