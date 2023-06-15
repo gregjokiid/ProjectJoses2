@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.uas.DBHelper;
 import com.example.uas.R;
 import com.example.uas.adapter.TransactionAdapter;
 import com.example.uas.model.Transaction;
@@ -22,11 +23,14 @@ import java.util.ArrayList;
 public class TransactionActivity extends AppCompatActivity {
     private RecyclerView rvTransaction;
     private ArrayList<Transaction> list = new ArrayList<>();
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction);
+
+        dbHelper = new DBHelper(this);
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
