@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.uas.DBHelper;
@@ -58,12 +61,30 @@ public class TransactionActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.option_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu1) {
+            startActivity(new Intent(this, LoginActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.menu2) {
+            startActivity(new Intent(this, MenuActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.menu3) {
+            Intent directintent = new Intent(this, TransactionActivity.class);
+            directintent.putExtra("user_email", userEmail);
+            startActivity(directintent);
+            return true;
+        } else if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        } else {
+            return true;
         }
-        return super.onOptionsItemSelected(item);
     }
 }

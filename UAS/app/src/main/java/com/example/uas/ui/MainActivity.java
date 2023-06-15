@@ -114,6 +114,11 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
     }
 
     @Override
+    public void onItemClicked(Medicine data) {
+        ShowMedicine(data);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.option_menu, menu);
@@ -129,17 +134,12 @@ public class MainActivity extends AppCompatActivity implements MedicineAdapter.O
             startActivity(new Intent(this, MenuActivity.class));
             return true;
         } else if (item.getItemId() == R.id.menu3) {
-            Intent directintent = new Intent(MainActivity.this, TransactionActivity.class);
+            Intent directintent = new Intent(this, TransactionActivity.class);
             directintent.putExtra("user_email", userEmail);
             startActivity(directintent);
             return true;
         } else {
             return true;
         }
-    }
-
-    @Override
-    public void onItemClicked(Medicine data) {
-        ShowMedicine(data);
     }
 }
