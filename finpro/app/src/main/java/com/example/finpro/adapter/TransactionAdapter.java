@@ -5,6 +5,7 @@ import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,10 +46,17 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         holder.tvTransactionDate.setText(transaction.getTransactionDate());
         holder.tvQuantity.setText(String.valueOf(transaction.getQuantity()));
 
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
+        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                onItemClickCallBack.onItemClicked(transactionList.get(holder.getAdapterPosition()));
+            public void onClick(View view) {
+                onItemClickCallBack.onUpdate(transaction);
+            }
+        });
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClickCallBack.onDelete(transaction);
             }
         });
     }
@@ -60,16 +68,20 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
         TextView tvMedicineId, tvTransactionDate, tvQuantity;
+        Button btnUpdate, btnDelete;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMedicineId = itemView.findViewById(R.id.tv_item_medicine_id);
             tvTransactionDate = itemView.findViewById(R.id.tv_item_transaction_date);
             tvQuantity = itemView.findViewById(R.id.tv_item_quantity);
+            btnUpdate = itemView.findViewById(R.id.btn_update);
+            btnDelete = itemView.findViewById(R.id.btn_delete);
         }
     }
 
     public interface OnItemClickCallBack {
-        void onItemClicked(Transaction data);
+        void onUpdate(Transaction data);
+        void onDelete(Transaction data);
     }
 }

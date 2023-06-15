@@ -1,22 +1,34 @@
 package com.example.finpro.ui;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.finpro.DBHelper;
 import com.example.finpro.R;
 import com.example.finpro.adapter.TransactionAdapter;
 import com.example.finpro.model.Transaction;
+import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class TransactionActivity extends AppCompatActivity {
     private RecyclerView rvTransaction;
@@ -53,8 +65,28 @@ public class TransactionActivity extends AppCompatActivity {
 
         transactionAdapter.setOnItemClickCallBack(new TransactionAdapter.OnItemClickCallBack() {
             @Override
-            public void onItemClicked(Transaction data) {
+            public void onUpdate(Transaction data) {
                 //
+            }
+
+            @Override
+            public void onDelete(Transaction data) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(TransactionActivity.this)
+                        .setTitle("Apakah yakin ingin menghapus")
+                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //
+                            }
+                        })
+                        .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //
+                            }
+                        });
+                builder.create();
+                builder.show();
             }
         });
     }
