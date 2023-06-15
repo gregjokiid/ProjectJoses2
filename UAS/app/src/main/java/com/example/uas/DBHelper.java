@@ -98,7 +98,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (count > 0) {
             if (isVerified.equals("0")) {
-                return "otp";
+                return "true";
             } else {
                 return "true";
             }
