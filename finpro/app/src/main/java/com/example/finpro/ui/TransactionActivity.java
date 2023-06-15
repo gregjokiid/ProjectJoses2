@@ -67,7 +67,7 @@ public class TransactionActivity extends AppCompatActivity {
         transactionAdapter.setOnItemClickCallBack(new TransactionAdapter.OnItemClickCallBack() {
             @Override
             public void onUpdate(Transaction data) {
-                //
+                openDialog(data);
             }
 
             @Override
@@ -91,6 +91,32 @@ public class TransactionActivity extends AppCompatActivity {
                 builder.show();
             }
         });
+    }
+
+    public void openDialog(Transaction data){
+        AlertDialog.Builder builder = new AlertDialog.Builder(TransactionActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_beli_obat, null);
+        builder.setView(view);
+        TextInputLayout layoutQuantity = view.findViewById(R.id.layout_quantity);
+        EditText edtQuantity = view.findViewById(R.id.edt_quantity);
+        Button btnBeliDialog = view.findViewById(R.id.btn_beliDialog);
+        btnBeliDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String quantityString = edtQuantity.getText().toString();
+                int quantity = quantityString.equals("") ? 0 : Integer.parseInt(quantityString);
+                if(quantity < 1) {
+                    layoutQuantity.setError("Isi terlebih dahulu");
+                } else {
+                    dbHelper.updateTransactionQuantityById(data.getId(), quantity);
+
+                    Toast.makeText(TransactionActivity.this, "Berhasil mengupdate pembelian obat", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        });
+        builder.show();
     }
 
     @Override
