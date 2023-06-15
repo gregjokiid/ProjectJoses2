@@ -47,7 +47,6 @@ public class DetailActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setTitle("ONIC Fans Apps");
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         tvMedicineName = findViewById(R.id.tv_medicineName);

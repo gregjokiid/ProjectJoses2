@@ -1,11 +1,13 @@
 package com.example.uas.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.example.uas.DBHelper;
 import com.example.uas.R;
@@ -31,7 +33,7 @@ public class TransactionActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        setTitle("ONIC Fans Apps");
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         rvTransaction = findViewById(R.id.rv_transaction);
         rvTransaction.setHasFixedSize(true);
@@ -53,5 +55,15 @@ public class TransactionActivity extends AppCompatActivity {
                 //
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
