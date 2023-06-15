@@ -45,11 +45,11 @@ public class TransactionData {
     public static ArrayList<Transaction> getListData() {
         ArrayList<Transaction> list = new ArrayList<>();
         for(int position = 0; position < MedicineId.length; position++) {
-            Transaction news = new Transaction();
-            news.setMedicineId(MedicineId[position]);
-            news.setTransactionDate(TransactionDate[position]);
-            news.setQuantity(Integer.parseInt(Quantity[position]));
-            list.add(news);
+            Transaction transaction = new Transaction();
+            transaction.setMedicineId(MedicineId[position]);
+            transaction.setTransactionDate(TransactionDate[position]);
+            transaction.setQuantity(Integer.parseInt(Quantity[position]));
+            list.add(transaction);
         }
         return list;
     }

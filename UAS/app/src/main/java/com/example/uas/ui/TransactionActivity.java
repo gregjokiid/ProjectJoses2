@@ -20,7 +20,7 @@ import com.example.uas.model.TransactionData;
 import java.util.ArrayList;
 
 public class TransactionActivity extends AppCompatActivity {
-    private RecyclerView rvNews;
+    private RecyclerView rvTransaction;
     private ArrayList<Transaction> list = new ArrayList<>();
 
     @Override
@@ -32,19 +32,19 @@ public class TransactionActivity extends AppCompatActivity {
         assert actionBar != null;
         setTitle("ONIC Fans Apps");
 
-        rvNews = findViewById(R.id.rv_transaction);
-        rvNews.setHasFixedSize(true);
+        rvTransaction = findViewById(R.id.rv_transaction);
+        rvTransaction.setHasFixedSize(true);
 
         list.addAll(TransactionData.getListData());
         showRecyclerList();
     }
 
     private void showRecyclerList() {
-        rvNews.setLayoutManager(new LinearLayoutManager(this));
-        TransactionAdapter newsAdapter = new TransactionAdapter(list);
-        rvNews.setAdapter(newsAdapter);
+        rvTransaction.setLayoutManager(new LinearLayoutManager(this));
+        TransactionAdapter transactionAdapter = new TransactionAdapter(list);
+        rvTransaction.setAdapter(transactionAdapter);
 
-        newsAdapter.setOnItemClickCallBack(new TransactionAdapter.OnItemClickCallBack() {
+        transactionAdapter.setOnItemClickCallBack(new TransactionAdapter.OnItemClickCallBack() {
             @Override
             public void onItemClicked(Transaction data) {
 //                ShowNews(data);

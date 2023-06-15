@@ -27,10 +27,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         this.onItemClickCallBack = onItemClickCallBack;
     }
 
-    private final ArrayList<Transaction> newsList;
+    private final ArrayList<Transaction> transactionList;
 
     public TransactionAdapter(ArrayList<Transaction> list){
-        this.newsList = list;
+        this.transactionList = list;
     }
 
     @NonNull
@@ -44,22 +44,22 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull final TransactionAdapter.ListViewHolder holder, int position) {
-        Transaction news = newsList.get(position);
-        holder.tvMedicineId.setText(news.getMedicineId());
-        holder.tvTransactionDate.setText(news.getTransactionDate());
-        holder.tvQuantity.setText(String.valueOf(news.getQuantity()));
+        Transaction transaction = transactionList.get(position);
+        holder.tvMedicineId.setText(transaction.getMedicineId());
+        holder.tvTransactionDate.setText(transaction.getTransactionDate());
+        holder.tvQuantity.setText(String.valueOf(transaction.getQuantity()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                onItemClickCallBack.onItemClicked(newsList.get(holder.getAdapterPosition()));
+                onItemClickCallBack.onItemClicked(transactionList.get(holder.getAdapterPosition()));
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return newsList.size();
+        return transactionList.size();
     }
 
     public static class ListViewHolder extends RecyclerView.ViewHolder {
