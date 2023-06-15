@@ -47,7 +47,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         Transaction news = newsList.get(position);
         holder.tvMedicineId.setText(news.getMedicineId());
         holder.tvTransactionDate.setText(news.getTransactionDate());
-        holder.tvQuantity.setText(news.getQuantity());
+        holder.tvQuantity.setText(String.valueOf(news.getQuantity()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
