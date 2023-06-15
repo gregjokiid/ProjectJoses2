@@ -50,13 +50,6 @@ public class TransactionActivity extends AppCompatActivity {
         rvTransaction.setLayoutManager(new LinearLayoutManager(this));
         TransactionAdapter transactionAdapter = new TransactionAdapter(list);
         rvTransaction.setAdapter(transactionAdapter);
-
-        transactionAdapter.setOnItemClickCallBack(new TransactionAdapter.OnItemClickCallBack() {
-            @Override
-            public void onItemClicked(Transaction data) {
-                //
-            }
-        });
     }
 
     @Override
