@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.uas'
+    namespace 'com.example.finpro'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.uas"
+        applicationId "com.example.finpro"
         minSdk 24
         targetSdk 33
         versionCode 1

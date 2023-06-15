@@ -1,4 +1,4 @@
-package com.example.uas.ui;
+package com.example.finpro.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.uas.DBHelper;
-import com.example.uas.R;
+import com.example.finpro.DBHelper;
+import com.example.finpro.R;
 
 public class LoginActivity extends AppCompatActivity {
 

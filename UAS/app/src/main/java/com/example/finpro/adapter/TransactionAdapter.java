@@ -1,4 +1,4 @@
-package com.example.uas.adapter;
+package com.example.finpro.adapter;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.uas.R;
-import com.example.uas.model.Transaction;
+import com.example.finpro.R;
+import com.example.finpro.model.Transaction;
 
 import java.util.ArrayList;
 

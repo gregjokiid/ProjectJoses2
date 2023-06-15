@@ -1,4 +1,4 @@
-package com.example.uas.adapter;
+package com.example.finpro.adapter;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.uas.R;
-import com.example.uas.model.Medicine;
+import com.example.finpro.R;
+import com.example.finpro.model.Medicine;
 
 import java.util.ArrayList;
 

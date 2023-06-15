@@ -1,4 +1,4 @@
-package com.example.uas.ui;
+package com.example.finpro.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,9 +19,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.uas.R;
-import com.example.uas.adapter.MedicineAdapter;
-import com.example.uas.model.Medicine;
+import com.example.finpro.R;
+import com.example.finpro.adapter.MedicineAdapter;
+import com.example.finpro.model.Medicine;
 
 import org.json.JSONArray;
 import org.json.JSONException;

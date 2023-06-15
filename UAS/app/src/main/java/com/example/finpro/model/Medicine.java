@@ -1,4 +1,4 @@
-package com.example.uas.model;
+package com.example.finpro.model;
 
 public class Medicine {
     private int id;

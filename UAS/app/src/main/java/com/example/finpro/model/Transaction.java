@@ -1,4 +1,4 @@
-package com.example.uas.model;
+package com.example.finpro.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

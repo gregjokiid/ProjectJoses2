@@ -1,4 +1,4 @@
-package com.example.uas.ui;
+package com.example.finpro.ui;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -22,8 +22,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.uas.DBHelper;
-import com.example.uas.R;
+import com.example.finpro.DBHelper;
+import com.example.finpro.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;

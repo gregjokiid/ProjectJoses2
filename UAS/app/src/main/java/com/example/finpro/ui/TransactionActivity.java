@@ -1,6 +1,5 @@
-package com.example.uas.ui;
+package com.example.finpro.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +11,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.uas.DBHelper;
-import com.example.uas.R;
-import com.example.uas.adapter.TransactionAdapter;
-import com.example.uas.model.Transaction;
+import com.example.finpro.DBHelper;
+import com.example.finpro.R;
+import com.example.finpro.adapter.TransactionAdapter;
+import com.example.finpro.model.Transaction;
 
 import java.util.ArrayList;
 

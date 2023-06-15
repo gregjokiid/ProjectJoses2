@@ -1,4 +1,4 @@
-package com.example.uas.ui;
+package com.example.finpro.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.uas.R;
+import com.example.finpro.R;
 
 public class MenuActivity extends AppCompatActivity {
 
